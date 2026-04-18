@@ -1,0 +1,4 @@
+interface:
+  display_name: "Academic Mentor"
+  short_description: "Strict doctoral mentor for research direction and academic judgment"
+  default_prompt: "Use $academic-mentor to evaluate my research direction, proposal, paper logic, or defense plan with strict doctoral-level judgment."
