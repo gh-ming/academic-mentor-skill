@@ -36,6 +36,8 @@ Primary updater for:
 - `open_risks`
 - `must_fix`
 - `next_decision`
+- `Student Alignment Profile`
+- `Mentor Interaction Trace`
 
 Default behavior:
 
@@ -43,6 +45,8 @@ Default behavior:
 - do not create broad knowledge inventories
 - update shared memory only when the judgment materially affects future decisions
 - treat `Research Profile` as a read-mostly background object unless a high-confidence judgment materially reframes it
+- treat `Student Alignment Profile` as gradual alignment memory, not as a place to overwrite mentor principles
+- write `Mentor Interaction Trace` sparsely after high-value mentor turns or when later outcomes validate or invalidate advice
 
 ## Promotion Rules
 
@@ -58,9 +62,12 @@ Do not promote:
 - low-confidence speculation
 - temporary wording choices with no long-term consequence
 - brainstorm fragments that were not evaluated
+- one-off emotional reactions that have not repeated
 
 ## Conflict Rules
 
 - shared memory is the single fact base across both skills
+- fact memory and alignment memory must remain logically separated
 - if a new result conflicts with existing memory, refine or update rather than duplicating
 - if certainty is low, keep uncertainty explicit instead of overwriting earlier conclusions
+- student preference can adjust advisor weighting, but cannot directly rewrite factual research memory

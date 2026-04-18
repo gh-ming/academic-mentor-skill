@@ -10,7 +10,7 @@
 
 1. 把 `academic-mentor` 封装成可直接安装、可直接推送 GitHub 的独立 skill 仓库
 2. 把导师人格从“模仿名人说话”收束到“基于公开来源提炼研究判断规则”
-3. 为后续扩展提供清晰结构：来源蒸馏、人格切换、学术测试、共享记忆
+3. 将其升级为“统一导师表层 + 三导师内部协同 + 反馈调权学习”的导师系统
 
 ## 仓库内容
 
@@ -33,16 +33,22 @@
 3. 再判断证据是否支撑主张
 4. 最后才看措辞和包装
 
-它的默认人格是一个“融合型严格博士导师”，由三种 lens 组成：
+它的默认产品形态现在是一个“统一导师系统”：
 
-- `Fei-Fei lens`
+- 用户看到的是一个连续稳定的统一导师
+- 内部由三位导师协同分析
+- 学生反馈用于调节三位导师权重，而不是改写底层事实
+
+内部三位导师分别负责：
+
+- `Fei-Fei advisor`
   - 大图景、研究意义、叙事闭环
-- `Kaiming lens`
+- `Kaiming advisor`
   - 问题是否干净、方法是否本质、复杂度是否值得
-- `Muyu lens`
+- `Li-Mu advisor`
   - 如何拆解、如何验证、如何把问题压到可执行步骤
 
-这些 lens 不是角色扮演，而是判断规则。
+这些导师不是角色扮演，而是内部判断分析器。
 
 ## 来源蒸馏方式
 
@@ -79,14 +85,14 @@
 
 这是当前最值得继续强化的方向之一。
 
-建议把人格交互分成三层：
+建议把导师交互分成三层：
 
 - `integrated`
-  - 默认模式，一个统一导师声音，内部综合三种 lens
+  - 默认模式，一个统一导师声音，内部运行三导师协同
 - `lens-switch`
-  - 显式切到某一个 lens 看问题，例如更强调问题洁净度或执行路径
+  - 显式更偏某位导师，例如更强调问题洁净度或执行路径
 - `panel/debate`
-  - 多 persona 并行审查，同一问题分别给出视角，再输出综合判断
+  - 三位导师并行短评，再输出综合判断
 
 具体建议见：
 
@@ -124,6 +130,7 @@ academic-mentor-skill-repo/
         │   └── openai.yaml
         └── references/
             ├── advisor-persona.md
+            ├── mentor-council.md
             ├── source-grounding.md
             ├── fei-fei-li-source-pack.md
             ├── kaiming-he-source-pack.md
@@ -134,6 +141,7 @@ academic-mentor-skill-repo/
             ├── defense-prep-rubric.md
             ├── milestone-review-rubric.md
             ├── phd-scenario-optimization.md
+            ├── student-feedback-learning.md
             ├── shared-memory-schema.md
             └── shared-memory-operations.md
 ```
@@ -151,7 +159,7 @@ git push -u origin main
 
 如果下一步继续增强这个仓库，优先级建议是：
 
-1. 按论文/项目页、课程视频、访谈三类继续扩充人物源包
-2. 优先强化 `integrated / lens-switch / panel` 三种交互模式
-3. 用仓库内测试集做稳定性检查，而不是只靠“像不像”
+1. 继续按论文、项目页、公开视频、访谈扩充三位导师源包
+2. 优先验证“统一导师表层 + 三导师协同 + 反馈调权”是否稳定成立
+3. 用仓库内测试集检查多导师差异性和综合输出质量
 4. 再考虑是否把 `academic-research-copilot` 作为兄弟 skill 一起封装

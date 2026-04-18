@@ -78,6 +78,27 @@ Use for paper sections, proposal sections, thesis writing, review responses, and
 
 Use as the high-level snapshot for the user's active research line.
 
+### `Student Alignment Profile`
+
+- `preferred_guidance_intensity`
+- `common_failure_patterns`
+- `accepted_feedback_patterns`
+- `resisted_feedback_patterns`
+- `learning_stage_by_topic`
+- `mentor_weight_adjustments`
+
+Use for durable mentor-student alignment information. This object stores how the student tends to receive guidance and where the mentor system should shift emphasis over time.
+
+### `Mentor Interaction Trace`
+
+- `task_type`
+- `mentor_internal_weights`
+- `student_response`
+- `advice_adoption_result`
+- `should_adjust_weights`
+
+Use for repeated mentoring threads where the system needs a sparse trace of whether advice was accepted, resisted, or validated later.
+
 ## Mentor Fields
 
 These fields are primarily written by `academic-mentor`:
@@ -86,5 +107,7 @@ These fields are primarily written by `academic-mentor`:
 - `open_risks`
 - `must_fix`
 - `next_decision`
+- `mentor_weight_adjustments`
+- `advice_adoption_result`
 
 These fields should remain sparse and high-value.

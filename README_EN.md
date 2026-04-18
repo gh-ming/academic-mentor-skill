@@ -10,7 +10,7 @@ This repo does three things:
 
 1. packages `academic-mentor` into a standalone skill repo that can be installed or pushed to GitHub directly
 2. grounds the mentor in public-source-derived research judgment rules instead of superficial imitation
-3. leaves clear extension points for source distillation, persona switching, academic testing, and shared memory
+3. upgrades it into a unified mentor system with an internal three-advisor council and feedback-based weighting
 
 ## What Is Included
 
@@ -33,16 +33,22 @@ The skill's evaluation order is fixed:
 3. judge whether the evidence supports the claim
 4. only then consider wording and presentation
 
-Its default persona is an integrated strict PhD mentor composed of three lenses:
+Its default product shape is now a unified mentor system:
 
-- `Fei-Fei lens`
+- the user sees one continuous mentor
+- internally the system runs three advisors
+- student feedback adjusts advisor weighting instead of rewriting factual memory
+
+The internal advisors are:
+
+- `Fei-Fei advisor`
   - significance, larger scientific framing, narrative coherence
-- `Kaiming lens`
+- `Kaiming advisor`
   - clean problem definition, method necessity, research taste
-- `Muyu lens`
+- `Li-Mu advisor`
   - decomposition, validation path, executable next steps
 
-These are judgment rules, not role-play.
+These are internal judgment analyzers, not role-play personas.
 
 ## Source Distillation
 
@@ -82,11 +88,11 @@ This is one of the most important next-stage enhancements.
 Recommended layers:
 
 - `integrated`
-  - default, one unified mentor voice with internal multi-lens reasoning
+  - default, one unified mentor voice with internal multi-advisor reasoning
 - `lens-switch`
-  - explicit switch to a specific lens when the user wants one dominant viewpoint
+  - explicit emphasis on one advisor when the user wants one dominant viewpoint
 - `panel/debate`
-  - multiple personas review the same question, then synthesize a final judgment
+  - the three advisors review the same question, then synthesize a final judgment
 
 See:
 
@@ -124,6 +130,7 @@ academic-mentor-skill-repo/
         │   └── openai.yaml
         └── references/
             ├── advisor-persona.md
+            ├── mentor-council.md
             ├── source-grounding.md
             ├── fei-fei-li-source-pack.md
             ├── kaiming-he-source-pack.md
@@ -134,6 +141,7 @@ academic-mentor-skill-repo/
             ├── defense-prep-rubric.md
             ├── milestone-review-rubric.md
             ├── phd-scenario-optimization.md
+            ├── student-feedback-learning.md
             ├── shared-memory-schema.md
             └── shared-memory-operations.md
 ```
@@ -151,7 +159,7 @@ git push -u origin main
 
 If you continue improving this repo, the best priority order is:
 
-1. enrich the source packs with stronger paper, lecture, talk, video, and interview evidence
-2. formalize the `integrated / lens-switch / panel` interaction modes
-3. use the built-in test plan to check stability instead of relying on style alone
+1. keep enriching the three advisor source packs with papers, project pages, talks, videos, and interviews
+2. validate whether the unified-surface plus internal-council model remains stable
+3. use the built-in tests to check advisor differentiation and synthesis quality
 4. only then consider packaging `academic-research-copilot` as a sibling skill

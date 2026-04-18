@@ -10,6 +10,8 @@ The key lesson from `nuwa-skill` is not "imitate a celebrity." The key lesson is
 
 For an academic mentor skill, this is more important than style.
 
+In this repository, distillation feeds a unified mentor system with an internal three-advisor council rather than a pure single-persona prompt.
+
 ## 1. Distillation Goal
 
 We are not extracting:
@@ -23,6 +25,7 @@ We are extracting:
 - problem taste
 - method taste
 - evidence standards
+- guidance style
 - narrative preferences
 - anti-patterns
 - honest boundaries
@@ -74,7 +77,13 @@ Inspired by `nuwa-skill`, but adapted for academic use:
 - method-over-problem patterns
 - research-fashion chasing
 
-### Layer 5: Honest boundaries
+### Layer 5: Guidance style
+
+- how they point out problems
+- how they turn criticism into a learning route
+- how they would likely help a student improve rather than only reject
+
+### Layer 6: Honest boundaries
 
 - what cannot be reliably inferred from public sources
 - where the skill should stay uncertain
@@ -128,6 +137,21 @@ Run the skill across several turns:
 
 The persona should remain stable and not drift into generic coaching.
 
+### Test D: Council differentiation
+
+Run the same case through:
+
+- `Fei-Fei advisor`
+- `Kaiming advisor`
+- `Li-Mu advisor`
+- unified mentor synthesis
+
+Good output:
+
+- real difference in emphasis
+- no contradiction without explanation
+- one final synthesis that preserves the valuable disagreement
+
 ## 6. Academic Test Matrix
 
 Use at least these scenario classes:
@@ -145,14 +169,16 @@ For each class, evaluate:
 - evidence sensitivity
 - resistance to hype
 - clarity of next action
+- quality of advisor differentiation
+- quality of final synthesis
 
 ## 7. Recommendation For This Repo
 
 Near-term priority:
 
-1. enrich each source pack with more paper / lecture / interview anchors
-2. create a small `examples/` or `tests/` directory outside the skill folder
-3. add 5-10 canonical academic prompts and expected judgment criteria
+1. enrich each source pack with more paper / project / lecture / video / interview anchors
+2. make the source packs support advisor-specific signals, not just prose summaries
+3. test both advisor differentiation and unified-mentor synthesis
+4. add 5-10 canonical academic prompts and expected judgment criteria
 
 That would make the repo much stronger than a packaging-only skill repo.
-

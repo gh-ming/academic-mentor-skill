@@ -9,34 +9,35 @@
 - explicit persona grounding rules
 - separation between persona rules, task rubrics, and memory references
 
-The main cleanup required for packaging was structural rather than conceptual:
+The latest redesign pushes it beyond a packaged persona prompt into a mentor system:
 
-- remove a duplicated `shared_memory_object` interface line
-- package the skill into a standalone repository
-- explain the internal logic at the repo level so future contributors can modify it safely
+- one unified mentor surface
+- one internal three-advisor council
+- one shared academic fact base
+- one alignment layer for gradual feedback-based weighting
 
 ## Core Design Logic
 
-### 1. Persona Layer
+### 1. Mentor-System Layer
 
-The skill uses one unified mentor voice, not multiple role-played voices.
+The skill now uses one unified mentor surface, not multiple role-played voices.
 
-It combines three derived lenses:
+Internally it runs a fixed advisor council:
 
-- `Fei-Fei lens`
+- `Fei-Fei advisor`
   - significance
   - research narrative
   - broader scientific framing
-- `Kaiming lens`
+- `Kaiming advisor`
   - clean problem definition
   - method necessity
   - research taste
-- `Muyu lens`
+- `Li-Mu advisor`
   - decomposition
   - execution clarity
   - validation path
 
-These are implemented as judgment rules, not as mimicry.
+These are implemented as judgment analyzers, not as mimicry.
 
 ### 2. Task Routing Layer
 
@@ -60,7 +61,18 @@ The next meaningful extension is explicit persona-mode control:
 
 This adds controllability without degrading the core design into role-play. In academic use, mode switching should change judgment emphasis, not voice imitation.
 
-### 3. Judgment Order
+### 3. Synthesis Layer
+
+The most important product change is synthesis.
+
+The internal advisors may disagree, but the default user experience should still be one continuous mentor answer. The system therefore needs:
+
+- advisor signals
+- synthesis rules
+- explicit weighting by task
+- guardrails against turning disagreement into performance
+
+### 4. Judgment Order
 
 The skill's most important invariant is its evaluation order:
 
@@ -71,7 +83,7 @@ The skill's most important invariant is its evaluation order:
 
 This order prevents the mentor from becoming a writing polisher or a generic brainstorming partner.
 
-### 4. Source Grounding Layer
+### 5. Source Grounding Layer
 
 The skill's persona is grounded through:
 
@@ -80,11 +92,11 @@ The skill's persona is grounded through:
 - `kaiming-he-source-pack.md`
 - `li-mu-source-pack.md`
 
-The source packs make the grounding auditable and extensible. They are especially useful if the persona needs later refinement or if additional mentors are added.
+The source packs make the grounding auditable and extensible. They are especially useful because the advisor council must be backed by more than prose description.
 
-### 5. Memory Layer
+### 6. Memory Layer
 
-The skill is designed to consume a shared academic memory schema instead of inventing context each time.
+The skill is designed to consume both shared academic memory and student-alignment memory instead of inventing context each time.
 
 Key shared objects:
 
@@ -94,11 +106,13 @@ Key shared objects:
 - `Idea Card`
 - `Experiment Card`
 - `Writing Brief`
+- `Student Alignment Profile`
+- `Mentor Interaction Trace`
 
 The mentor is intentionally read-heavy and write-light:
 
 - it reads broad context before making judgments
-- it only writes high-value judgment fields such as `mentor_status`, `open_risks`, `must_fix`, and `next_decision`
+- it only writes high-value judgment and alignment fields such as `mentor_status`, `open_risks`, `must_fix`, `next_decision`, and gradual weight adjustments
 
 ## Why the Structure Works
 
@@ -106,7 +120,7 @@ This structure keeps the skill stable under real academic use:
 
 - persona drift is reduced because grounding is explicit
 - judgment drift is reduced because routing and evaluation order are explicit
-- context drift is reduced because shared-memory references are explicit
+- context drift is reduced because shared-memory and alignment-memory references are explicit
 
 It also makes the skill easier to publish:
 
@@ -118,6 +132,7 @@ It also makes the skill easier to publish:
 - add more source packs for additional mentor inspirations
 - strengthen source packs with paper / project / video / interview evidence rather than lightweight summaries
 - add a small examples and test suite for mode stability
+- add canonical feedback-learning examples once enough real mentoring traces exist
 - split `paper` into `paper-logic` and `paper-strategy` if usage diverges
 - add examples or tests outside the skill folder if you want a contributor workflow
 - package `academic-research-copilot` as a sibling repo or mono-repo later

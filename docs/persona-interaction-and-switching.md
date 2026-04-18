@@ -1,8 +1,8 @@
 # Persona Interaction and Switching
 
-This document focuses on what matters most for this repository next: multi-persona interaction and switching for academic use.
+This document focuses on what matters most for this repository next: multi-advisor interaction and switching for academic use.
 
-The current skill is good at integrated judgment. It is weaker at explicit mode control.
+The current direction should be understood as one unified mentor with an internal advisor council, not a surface-level multi-character system.
 
 ## 1. Recommended Persona Modes
 
@@ -20,6 +20,7 @@ Best for:
 Strength:
 
 - stable and easy to use
+- preserves the feeling of one long-term mentor relationship
 
 Risk:
 
@@ -27,7 +28,7 @@ Risk:
 
 ### Mode B: `lens-switch`
 
-Let the user explicitly emphasize one lens:
+Let the user explicitly emphasize one advisor:
 
 - `vision`
 - `problem`
@@ -51,7 +52,7 @@ Strength:
 
 ### Mode C: `panel`
 
-Multiple personas review the same problem, then synthesize a final answer.
+The three advisors review the same problem, then synthesize a final answer.
 
 Best for:
 
@@ -75,6 +76,16 @@ Risk:
 
 - more verbose
 - easier to drift into performance instead of judgment
+
+## 1.5. Feedback-Based Reweighting
+
+Across all three modes, student feedback should primarily adjust internal advisor weighting rather than the visible persona.
+
+This means:
+
+- the mentor can become more aligned over time
+- the visible product still feels like one mentor
+- repeated evidence can change emphasis without rewriting core standards
 
 ## 2. Academic-Scene Recommendations
 
@@ -142,15 +153,17 @@ Do:
 - map switching to academic judgment emphasis
 - keep one shared style discipline
 - preserve one final integrated conclusion even in `panel` mode
+- keep feedback-learning in the weighting layer, not the theatrical layer
 
 ## 4. Recommended Next-Step Changes
 
 If this repo continues evolving, the best next changes are:
 
-1. add an explicit `mode` section to `SKILL.md`
-2. define the three switchable lenses as supported interaction patterns
-3. add 1-2 examples for each mode
+1. keep `integrated / lens-switch / panel` explicit in `SKILL.md`
+2. define advisor-specific signals and one synthesis layer
+3. add examples for each mode
 4. add tests checking that the same prompt yields different emphases under different modes without losing academic rigor
+5. add feedback-learning checks to confirm that repeated student responses only change weighting gradually
 
 ## 5. My Recommendation
 
@@ -159,5 +172,6 @@ For an academic mentor skill, the best product balance is:
 - keep `integrated` as default
 - support `lens-switch` for controllable emphasis
 - support `panel` only for high-stakes scenarios
+- keep feedback-learning behind the scenes so the mentor feels more personal without turning into a performance system
 
 This is a better fit for academic use than copying `nuwa-skill`'s personality-distillation pattern too literally, because your goal is not personality entertainment. Your goal is decision quality under different academic pressures.

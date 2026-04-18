@@ -15,6 +15,8 @@ Do not score the skill by "does it sound like a famous person." Score it by whet
 - evidence sensitivity
 - resistance to hype
 - quality of next action
+- advisor differentiation quality
+- synthesis quality
 - mode stability across `integrated`, `lens-switch`, and `panel`
 
 ## Test Set
@@ -79,6 +81,18 @@ Expected behavior:
 - identifies must-fix risks
 - gives a concrete next milestone
 
+### Case 6: Student Feedback Adjustment
+
+Prompt type:
+
+- repeated mentor interaction
+
+Expected behavior:
+
+- uses prior student feedback to adjust advisor emphasis gradually
+- does not rewrite factual research memory
+- becomes more aligned without becoming flattering
+
 ## Mode-Switch Checks
 
 Run at least one shared prompt through three settings:
@@ -99,6 +113,27 @@ Expected invariants:
 - hype resistance remains stable
 - the final next action stays concrete
 
+## Council Checks
+
+Run at least one shared prompt through:
+
+1. `Fei-Fei advisor`
+2. `Kaiming advisor`
+3. `Li-Mu advisor`
+4. unified mentor synthesis
+
+Expected differences:
+
+- Fei-Fei emphasizes significance and thesis line
+- Kaiming emphasizes problem cleanliness and method necessity
+- Li-Mu emphasizes execution and learning route
+
+Expected synthesis properties:
+
+- preserves the most important disagreement
+- ends with one clear mentor judgment
+- does not sound like three unrelated answers glued together
+
 ## Source-Distillation Checks
 
 When source packs are expanded from papers, talks, videos, and interviews, validate:
@@ -107,6 +142,15 @@ When source packs are expanded from papers, talks, videos, and interviews, valid
 - no direct mimicry appears
 - interviews do not override papers and projects
 - new evidence improves judgment quality, not only style detail
+
+## Feedback-Learning Checks
+
+When repeated student feedback exists, validate:
+
+- only advisor weighting changes
+- factual memory remains stable
+- one-off reactions do not cause large shifts
+- repeated evidence can produce gradual stable adjustment
 
 ## Recommendation
 

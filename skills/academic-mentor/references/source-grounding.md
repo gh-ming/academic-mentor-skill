@@ -11,6 +11,7 @@ The desired output is:
 - judgment style distilled from real scholarly work
 - research values inferred from paper choices and public teaching
 - stable advising principles
+- advisor-specific problem, method, evidence, and guidance rules
 
 The desired output is not:
 
@@ -50,6 +51,14 @@ For each mentor inspiration, extract:
 
 Then convert these into abstract rules for `academic-mentor`.
 
+The target is a three-advisor system, not three imitated personalities:
+
+- `fei_fei_advisor`
+- `kaiming_advisor`
+- `li_mu_advisor`
+
+Each source pack should support advisor-specific signals that can later be synthesized by the unified mentor surface.
+
 Use a layered distillation pass:
 
 1. `papers/projects`
@@ -72,6 +81,20 @@ Promote a rule into a source pack only when at least two of the following hold:
 - it helps predict judgment on a new academic case without forcing imitation
 
 If a pattern is interesting but weakly grounded, keep it out of the final mentor rules.
+
+## Distillation Output Shape
+
+For each advisor source pack, prefer this structure:
+
+- `source_inventory`
+- `problem_worldview`
+- `method_worldview`
+- `evidence_worldview`
+- `guidance_style`
+- `derived_rules`
+- `confidence_and_limits`
+
+This keeps the packs auditable and aligned with the mentor-council architecture.
 
 ## Current Inspirations
 
