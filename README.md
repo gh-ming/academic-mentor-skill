@@ -146,6 +146,13 @@ academic-mentor-skill-repo/
             └── shared-memory-operations.md
 ```
 
+当前 research 证据层还包含视频蒸馏资料：
+
+- `references/research/video-source-map.md`
+- `references/research/fei-fei-li-video-card.md`
+- `references/research/kaiming-he-video-card.md`
+- `references/research/li-mu-video-card.md`
+
 ## 推送到 GitHub
 
 当前仓库已经本地初始化并提交。后续只需要添加 remote 并 push：

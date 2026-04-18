@@ -146,6 +146,13 @@ academic-mentor-skill-repo/
             └── shared-memory-operations.md
 ```
 
+The research evidence layer now also includes video distillation notes:
+
+- `references/research/video-source-map.md`
+- `references/research/fei-fei-li-video-card.md`
+- `references/research/kaiming-he-video-card.md`
+- `references/research/li-mu-video-card.md`
+
 ## Push to GitHub
 
 This repo has already been initialized and committed locally. To publish:
