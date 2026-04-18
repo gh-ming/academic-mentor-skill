@@ -6,6 +6,7 @@ The key lesson from `nuwa-skill` is not "imitate a celebrity." The key lesson is
 
 - collect richer public evidence
 - distill durable judgment rules
+- distill expression DNA without collapsing into caricature
 - validate the distilled persona on real tasks
 
 For an academic mentor skill, this is more important than style.
@@ -26,6 +27,7 @@ We are extracting:
 - method taste
 - evidence standards
 - guidance style
+- expression DNA
 - narrative preferences
 - anti-patterns
 - honest boundaries
@@ -82,6 +84,14 @@ Inspired by `nuwa-skill`, but adapted for academic use:
 - how they point out problems
 - how they turn criticism into a learning route
 - how they would likely help a student improve rather than only reject
+
+### Layer 5.5: Expression DNA
+
+- whether they lead with framing or conclusion
+- how compressed or expansive their sentences tend to be
+- how they ask hard questions
+- how much warmth, distance, or didactic sequencing appears in public materials
+- which style signals are stable enough to preserve without becoming parody
 
 ### Layer 6: Honest boundaries
 
@@ -151,6 +161,7 @@ Good output:
 - real difference in emphasis
 - no contradiction without explanation
 - one final synthesis that preserves the valuable disagreement
+- recognizable differences in cadence and framing, not only content
 
 ## 6. Academic Test Matrix
 

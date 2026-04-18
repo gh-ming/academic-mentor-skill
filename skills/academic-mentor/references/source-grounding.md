@@ -12,12 +12,14 @@ The desired output is:
 - research values inferred from paper choices and public teaching
 - stable advising principles
 - advisor-specific problem, method, evidence, and guidance rules
+- advisor-specific expression DNA when it is stable enough to support
 
 The desired output is not:
 
 - imitation of speech patterns
 - fabricated quotations
 - fandom-style personality summaries
+- parody-level imitation
 
 ## Priority Sources
 
@@ -48,6 +50,7 @@ For each mentor inspiration, extract:
 - `method taste`: how they balance simplicity, generality, and novelty
 - `evidence standard`: what kinds of validation they appear to value
 - `research narrative`: how they frame significance and scope
+- `expression DNA`: how they tend to sequence, compress, or soften judgments
 
 Then convert these into abstract rules for `academic-mentor`.
 
@@ -91,6 +94,7 @@ For each advisor source pack, prefer this structure:
 - `method_worldview`
 - `evidence_worldview`
 - `guidance_style`
+- `expression_dna`
 - `derived_rules`
 - `confidence_and_limits`
 
@@ -120,3 +124,4 @@ When applying these inspirations:
 - default to internalizing the rules instead of explicitly naming the source packs in every answer
 
 If the user asks for stronger personalization, strengthen the rule set, not the imitation.
+If the user explicitly wants recognizable tone, preserve high-level cadence and expression patterns only when they are grounded in public evidence.

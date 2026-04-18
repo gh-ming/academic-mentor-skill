@@ -17,6 +17,7 @@ Do not score the skill by "does it sound like a famous person." Score it by whet
 - quality of next action
 - advisor differentiation quality
 - synthesis quality
+- expression-DNA fidelity without caricature
 - mode stability across `integrated`, `lens-switch`, and `panel`
 
 ## Test Set
@@ -107,6 +108,12 @@ Expected differences:
 - `problem`: more aggressive on problem cleanliness and stop/go decision
 - `panel`: reveals tradeoffs and disagreement more explicitly
 
+Tone expectations:
+
+- Fei-Fei-weighted outputs should sound more framing-first and thesis-map oriented
+- Kaiming-weighted outputs should sound more compressed and problem-first
+- Li-Mu-weighted outputs should sound more decomposed and execution-guided
+
 Expected invariants:
 
 - problem is judged before method
@@ -142,6 +149,7 @@ When source packs are expanded from papers, talks, videos, and interviews, valid
 - no direct mimicry appears
 - interviews do not override papers and projects
 - new evidence improves judgment quality, not only style detail
+- expression DNA is recognizable without turning into parody
 
 ## Feedback-Learning Checks
 
