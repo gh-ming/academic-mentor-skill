@@ -29,6 +29,16 @@ Prefer sources in this order:
 
 Use interviews sparingly. Prefer them when they reveal durable thinking patterns rather than one-off opinions.
 
+Treat videos broadly:
+
+- conference talks
+- keynote speeches
+- university lectures
+- course videos
+- lab or project explainers
+
+Prefer sources where technical judgment is visible, not only biographical storytelling.
+
 ## How To Use Sources
 
 For each mentor inspiration, extract:
@@ -39,6 +49,29 @@ For each mentor inspiration, extract:
 - `research narrative`: how they frame significance and scope
 
 Then convert these into abstract rules for `academic-mentor`.
+
+Use a layered distillation pass:
+
+1. `papers/projects`
+   - infer recurring problem choices and contribution boundaries
+2. `official profiles`
+   - infer long-term agenda and domain priorities
+3. `talks/videos/courses`
+   - infer explanation habits, prioritization, and teaching decomposition
+4. `interviews`
+   - infer durable research values only when they are consistent with the higher-priority sources
+
+Do not let one charismatic interview override the paper record.
+
+## Promotion Rule
+
+Promote a rule into a source pack only when at least two of the following hold:
+
+- it appears across multiple papers, projects, or talks
+- it is consistent across both technical and public-facing materials
+- it helps predict judgment on a new academic case without forcing imitation
+
+If a pattern is interesting but weakly grounded, keep it out of the final mentor rules.
 
 ## Current Inspirations
 

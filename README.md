@@ -1,23 +1,122 @@
 # Academic Mentor Skill Repo
 
-This repository packages `academic-mentor` as a publishable Codex/Claude-style skill repository. The skill is designed as a strict doctoral-level academic mentor for research direction judgment, proposal review, paper logic review, defense preparation, and milestone triage.
+中文 | [English](./README_EN.md)
 
-## What This Repo Contains
+一个面向学术场景的 `academic-mentor` skill 仓库。它不是通用陪聊人格，而是一个严格的博士导师型判断 skill，用来处理研究方向筛选、开题把关、论文逻辑审查、答辩准备和阶段性研究决策。
 
-- A directly installable skill folder at `skills/academic-mentor/`
-- A reviewed and cleaned `SKILL.md`
-- Persona grounding packs for Fei-Fei Li, Kaiming He, and Li Mu
-- Shared academic-memory schema references
-- Repository-level documentation explaining the skill's logic and structure
+## 仓库目标
 
-## Repository Layout
+这个仓库解决三件事：
+
+1. 把 `academic-mentor` 封装成可直接安装、可直接推送 GitHub 的独立 skill 仓库
+2. 把导师人格从“模仿名人说话”收束到“基于公开来源提炼研究判断规则”
+3. 为后续扩展提供清晰结构：来源蒸馏、人格切换、学术测试、共享记忆
+
+## 仓库内容
+
+- 可安装 skill：
+  - `skills/academic-mentor/`
+- 仓库级方法文档：
+  - `docs/skill-review-and-architecture.md`
+  - `docs/source-distillation-and-testing.md`
+  - `docs/persona-interaction-and-switching.md`
+- 示例与测试设计：
+  - `examples/mode-switch-prompts.md`
+  - `tests/academic-persona-eval.md`
+
+## 当前 skill 的核心逻辑
+
+`academic-mentor` 的判断顺序固定为：
+
+1. 先判断问题是否成立
+2. 再判断方法是否服务于问题
+3. 再判断证据是否支撑主张
+4. 最后才看措辞和包装
+
+它的默认人格是一个“融合型严格博士导师”，由三种 lens 组成：
+
+- `Fei-Fei lens`
+  - 大图景、研究意义、叙事闭环
+- `Kaiming lens`
+  - 问题是否干净、方法是否本质、复杂度是否值得
+- `Muyu lens`
+  - 如何拆解、如何验证、如何把问题压到可执行步骤
+
+这些 lens 不是角色扮演，而是判断规则。
+
+## 来源蒸馏方式
+
+当前仓库已经包含三份人物源包：
+
+- `fei-fei-li-source-pack.md`
+- `kaiming-he-source-pack.md`
+- `li-mu-source-pack.md`
+
+但如果要进一步提升质量，蒸馏材料还应继续扩展到：
+
+- 代表论文和项目页
+- 官方主页和机构资料
+- 高信号公开课程、talk、lecture 和 video
+- 能反映稳定研究观的访谈
+
+具体方法与建议见：
+
+- [docs/source-distillation-and-testing.md](./docs/source-distillation-and-testing.md)
+- [examples/mode-switch-prompts.md](./examples/mode-switch-prompts.md)
+- [tests/academic-persona-eval.md](./tests/academic-persona-eval.md)
+
+## 学术场景重点
+
+本仓库的目标不是“让名人替你说话”，而是让导师 skill 在学术场景里更有判断力。重点适用场景：
+
+- 开题题目和研究内容是否成立
+- 研究方向是否值得继续
+- 论文是否在讲真问题
+- 方法是否大于问题
+- 答辩时哪里最容易被打穿
+
+## 人格交互与切换
+
+这是当前最值得继续强化的方向之一。
+
+建议把人格交互分成三层：
+
+- `integrated`
+  - 默认模式，一个统一导师声音，内部综合三种 lens
+- `lens-switch`
+  - 显式切到某一个 lens 看问题，例如更强调问题洁净度或执行路径
+- `panel/debate`
+  - 多 persona 并行审查，同一问题分别给出视角，再输出综合判断
+
+具体建议见：
+
+- [docs/persona-interaction-and-switching.md](./docs/persona-interaction-and-switching.md)
+
+## 安装
+
+将 skill 目录复制到你的本地 skills 路径：
+
+```bash
+cp -R skills/academic-mentor ~/.codex/skills/
+```
+
+如果你使用的是其他 agent 框架，只要它支持技能目录加载，也可以直接指向 `skills/academic-mentor/`。
+
+## 仓库结构
 
 ```text
 academic-mentor-skill-repo/
 ├── README.md
+├── README_EN.md
 ├── .gitignore
 ├── docs/
-│   └── skill-review-and-architecture.md
+│   ├── skill-review-and-architecture.md
+│   ├── source-distillation-and-testing.md
+│   └── persona-interaction-and-switching.md
+├── examples/
+│   └── mode-switch-prompts.md
+├── tests/
+│   └── academic-persona-eval.md
 └── skills/
     └── academic-mentor/
         ├── SKILL.md
@@ -39,46 +138,20 @@ academic-mentor-skill-repo/
             └── shared-memory-operations.md
 ```
 
-## Skill Logic
+## 推送到 GitHub
 
-The skill is built around four layers:
-
-1. Persona layer
-   - one integrated mentor voice
-   - grounded in public academic sources, not imitation
-2. Task-routing layer
-   - `proposal`, `direction`, `paper`, `defense`, `milestone`
-3. Judgment layer
-   - problem first
-   - method second
-   - evidence third
-   - wording last
-4. Shared-memory layer
-   - reads `Research Profile`, `Project State`, `Paper Card`, `Idea Card`, `Experiment Card`, and `Writing Brief`
-
-## Installation
-
-Copy the skill folder into your skills directory:
-
-```bash
-cp -R skills/academic-mentor ~/.codex/skills/
-```
-
-If you use another agent framework, point that framework at the `skills/academic-mentor/` directory.
-
-## Recommended Publishing Flow
-
-Initialize a remote and push:
+当前仓库已经本地初始化并提交。后续只需要添加 remote 并 push：
 
 ```bash
 git remote add origin <your-repo-url>
 git push -u origin main
 ```
 
-If you plan to publish this publicly, add a license before pushing.
+## 当前建议
 
-## Notes
+如果下一步继续增强这个仓库，优先级建议是：
 
-- The repository packages only the mentor skill, not the copilot skill.
-- The shared-memory references are included so the skill remains self-contained.
-- The persona source packs are designed to internalize judgment rules rather than imitate named individuals.
+1. 按论文/项目页、课程视频、访谈三类继续扩充人物源包
+2. 优先强化 `integrated / lens-switch / panel` 三种交互模式
+3. 用仓库内测试集做稳定性检查，而不是只靠“像不像”
+4. 再考虑是否把 `academic-research-copilot` 作为兄弟 skill 一起封装

@@ -50,6 +50,16 @@ The skill routes into five high-level decision contexts:
 
 Each route has a paired reference file to keep `SKILL.md` concise while preserving task-specific guidance.
 
+### 2.5. Interaction-Mode Layer
+
+The next meaningful extension is explicit persona-mode control:
+
+- `integrated`
+- `lens-switch`
+- `panel`
+
+This adds controllability without degrading the core design into role-play. In academic use, mode switching should change judgment emphasis, not voice imitation.
+
 ### 3. Judgment Order
 
 The skill's most important invariant is its evaluation order:
@@ -106,6 +116,8 @@ It also makes the skill easier to publish:
 ## Future Extension Points
 
 - add more source packs for additional mentor inspirations
+- strengthen source packs with paper / project / video / interview evidence rather than lightweight summaries
+- add a small examples and test suite for mode stability
 - split `paper` into `paper-logic` and `paper-strategy` if usage diverges
 - add examples or tests outside the skill folder if you want a contributor workflow
 - package `academic-research-copilot` as a sibling repo or mono-repo later
