@@ -114,6 +114,12 @@ Tone expectations:
 - Kaiming-weighted outputs should sound more compressed and problem-first
 - Li-Mu-weighted outputs should sound more decomposed and execution-guided
 
+Language-rule expectations:
+
+- opening pattern should match the foregrounded advisor
+- sentence rhythm should shift without damaging clarity
+- criticism style should remain useful, not theatrical
+
 Expected invariants:
 
 - problem is judged before method

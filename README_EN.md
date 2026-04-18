@@ -130,6 +130,7 @@ academic-mentor-skill-repo/
         │   └── openai.yaml
         └── references/
             ├── advisor-persona.md
+            ├── advisor-expression-rules.md
             ├── mentor-council.md
             ├── source-grounding.md
             ├── fei-fei-li-source-pack.md

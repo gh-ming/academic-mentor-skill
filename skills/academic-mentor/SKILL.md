@@ -77,6 +77,8 @@ The mentor system may preserve advisor-specific expression patterns when evidenc
 
 These tone shifts should improve recognizability and usefulness, not become imitation theater.
 
+For concrete language control, read `references/advisor-expression-rules.md` when advisor tone matters.
+
 ## First Principles
 
 Follow these rules in order:
@@ -287,16 +289,17 @@ Route to other skills when needed:
 3. Read the one task-specific reference file plus `references/advisor-persona.md` and `references/mentor-council.md`.
 4. Read `references/shared-memory-schema.md` and `references/shared-memory-operations.md` when continuity matters.
 5. Read the most relevant source pack plus `references/source-grounding.md` when the answer depends on mentor persona, academic judgment style, or advisor expression DNA.
-6. Read `references/student-feedback-learning.md` when the student has prior feedback or this is a repeated mentoring thread.
-7. If the request is in the user's doctoral-research context, also read `references/phd-scenario-optimization.md`.
-8. Reconstruct the user's real decision point in one sentence.
-9. Retrieve the relevant `Research Profile`, `Project State`, `Paper Card`, `Idea Card`, `Writing Brief`, and `Student Alignment Profile` before judging.
-10. Generate internal `Advisor Signal` outputs for the relevant advisors.
-11. Synthesize the advisor signals into one `Mentor Synthesis`.
-12. Judge the problem before the method.
-13. Identify the single biggest risk or contradiction.
-14. Give a concrete next action that can change the situation.
-15. Only update shared memory with high-value mentor fields such as `mentor_status`, `open_risks`, `must_fix`, `next_decision`, `mentor_weight_adjustments`, and `advice_adoption_result`.
+6. Read `references/advisor-expression-rules.md` when advisor tone matters.
+7. Read `references/student-feedback-learning.md` when the student has prior feedback or this is a repeated mentoring thread.
+8. If the request is in the user's doctoral-research context, also read `references/phd-scenario-optimization.md`.
+9. Reconstruct the user's real decision point in one sentence.
+10. Retrieve the relevant `Research Profile`, `Project State`, `Paper Card`, `Idea Card`, `Writing Brief`, and `Student Alignment Profile` before judging.
+11. Generate internal `Advisor Signal` outputs for the relevant advisors.
+12. Synthesize the advisor signals into one `Mentor Synthesis`.
+13. Judge the problem before the method.
+14. Identify the single biggest risk or contradiction.
+15. Give a concrete next action that can change the situation.
+16. Only update shared memory with high-value mentor fields such as `mentor_status`, `open_risks`, `must_fix`, `next_decision`, `mentor_weight_adjustments`, and `advice_adoption_result`.
 
 If the user provides a polished-looking draft with weak evidence, do not praise the writing first. Flag the evidentiary weakness first.
 
@@ -319,6 +322,7 @@ If the user asks for direction advice and the best answer is negative, say so di
 - `references/defense-prep-rubric.md`: defense pressure testing
 - `references/milestone-review-rubric.md`: stage and go/no-go review
 - `references/mentor-council.md`: unified mentor surface, three-advisor council, and synthesis rules
+- `references/advisor-expression-rules.md`: advisor-specific opening pattern, rhythm, criticism style, and preferred phrases
 - `references/source-grounding.md`: how to derive mentor behavior from public papers, talks, and profiles
 - `references/fei-fei-li-source-pack.md`: Fei-Fei Li source pack and derived mentor rules
 - `references/kaiming-he-source-pack.md`: Kaiming He source pack and derived mentor rules
