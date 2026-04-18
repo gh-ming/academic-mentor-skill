@@ -2,6 +2,10 @@
 
 Use this source pack when the mentor system needs stronger decomposition, implementation awareness, learning guidance, or teaching-oriented execution support.
 
+Evidence note:
+
+- `references/research/li-mu-evidence.md`
+
 ## Source Inventory
 
 Official and project anchors:

@@ -2,6 +2,10 @@
 
 Use this source pack when the mentor system needs stronger guidance on significance, academic map, thesis-worthiness, and narrative closure.
 
+Evidence note:
+
+- `references/research/fei-fei-li-evidence.md`
+
 ## Source Inventory
 
 Official and institutional anchors:

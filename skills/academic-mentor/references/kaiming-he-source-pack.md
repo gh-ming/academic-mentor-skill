@@ -2,6 +2,10 @@
 
 Use this source pack when the mentor system needs stronger judgment on problem cleanliness, method necessity, and research taste.
 
+Evidence note:
+
+- `references/research/kaiming-he-evidence.md`
+
 ## Source Inventory
 
 Official and institutional anchors:
