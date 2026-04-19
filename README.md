@@ -56,6 +56,8 @@
 
 ## How It Works
 
+![How Academic Mentor Skill works](./assets/how-academic-mentor-skill-works.png)
+
 ```mermaid
 flowchart LR
   U["User Goal"] --> I["Research Context Intake"]
