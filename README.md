@@ -22,6 +22,26 @@
 - 一个完成检查机制：任务没达到目标时，导师返回 `continue`，助手只执行下一轮明确修订任务，默认最多 3 轮。
 - 一个可扩展 skill 仓库：可以继续增加人物源包、记忆后端、Stop hook adapter 和脚本化 loop harness。
 
+## Who This Is For
+
+- 博士生：准备开题报告、论文主线、实验设计、阶段汇报和答辩。
+- 科研作者：需要检查 claim-evidence 是否成立，而不只是润色句子。
+- 研究方向探索者：需要判断方向该继续、收缩、补证据还是放弃。
+- Agent builder：想把“助手执行 + 导师审查 + 有界续跑”做成可复用 skill 协议。
+
+## How It Works
+
+![How Academic Mentor Skill works](./assets/how-academic-mentor-skill-works.png)
+
+默认流程：
+
+1. 用户给出研究目标、论文片段、开题任务、实验计划或答辩问题。
+2. `academic-research-copilot` 先做研究背景导入：优先用 Zotero / PDF / 共享记忆，其次用用户给出的研究方向建立低置信 `Research Context Brief`。
+3. `academic-research-copilot` 再执行：读、整理、规划、写、改。
+4. `academic-mentor` 负责审查：判断目标是否真正完成，以及背景依据是否足够。
+5. 如果导师返回 `continue`，助手只处理导师指定的阻塞问题，不重新发散。
+6. 默认 `max_iterations = 3`，避免无限循环。
+
 ## Quick Demo
 
 假设你给出一个博士开题题目：
@@ -53,19 +73,6 @@
 - 如果还没完成，下一轮助手必须具体修什么？
 
 这就是本仓库的核心工作流：**Copilot 做，Mentor 审，没过就继续，不让任务在看似完成时停掉。**
-
-## How It Works
-
-![How Academic Mentor Skill works](./assets/how-academic-mentor-skill-works.png)
-
-默认流程：
-
-1. 用户给出研究目标、论文片段、开题任务、实验计划或答辩问题。
-2. `academic-research-copilot` 先做研究背景导入：优先用 Zotero / PDF / 共享记忆，其次用用户给出的研究方向建立低置信 `Research Context Brief`。
-3. `academic-research-copilot` 再执行：读、整理、规划、写、改。
-4. `academic-mentor` 负责审查：判断目标是否真正完成，以及背景依据是否足够。
-5. 如果导师返回 `continue`，助手只处理导师指定的阻塞问题，不重新发散。
-6. 默认 `max_iterations = 3`，避免无限循环。
 
 ## The Three Advisor Lenses
 
@@ -113,22 +120,14 @@ Use $academic-mentor in panel mode to stress-test my defense questions.
 Use both skills to keep improving this opening report until the mentor returns pass or stop-on-budget.
 ```
 
-## Who This Is For
-
-- 博士生：准备开题报告、论文主线、实验设计、阶段汇报和答辩。
-- 科研作者：需要检查 claim-evidence 是否成立，而不只是润色句子。
-- 研究方向探索者：需要判断方向该继续、收缩、补证据还是放弃。
-- Agent builder：想把“助手执行 + 导师审查 + 有界续跑”做成可复用 skill 协议。
-
 ## Respectful Use And Boundaries
 
 - 我们非常尊重李飞飞、何凯明、李沐等学者；使用他们作为灵感来源，是因为他们的公开学术产物体现了值得学习的研究品味、表达能力和指导方式。
-- 这个项目不模拟本人，不冒充本人，不声称代表他们的真实意见，也不把他们简化成表演式口吻。
-- 这不是自动科研系统；它能审查、拆解和推进任务，但不能替代真实实验、导师反馈和领域验证。
-- 这不是无限运行 agent；默认最多 3 轮，超过后必须返回 `stop-on-budget` 和剩余阻塞点。
-- 这不是泛用写作润色器；如果问题定义或证据链不成立，导师会先指出根本矛盾。
-- 共享记忆协议已经定义，但具体持久化后端取决于宿主 agent 框架。
-- 高风险学术判断必须声明 `context_basis`；如果只有用户一句话，系统只能给低置信判断或要求补充 Zotero/PDF/方向资料。
+- 这里学习的是他们公开学术产物中的判断原则，而不是代替他们发言，也不是把他们做成表演式人设。
+- 这个系统擅长帮助你做研究判断、整理背景、规划实验和推动写作，但真实实验、正式导师反馈和领域验证仍然不可替代。
+- 默认最多 3 轮，目的是避免任务假装完成，也避免无限循环。
+- 当问题定义或证据链本身不稳时，导师会先指出根本矛盾，而不是直接帮你润色。
+- 高风险学术判断必须说明 `context_basis`；如果只有一句话题目，系统只能给低置信判断，或先要求补充 Zotero、PDF 和研究方向资料。
 
 ## Repository Goals
 
@@ -248,15 +247,3 @@ academic-mentor-skill-repo/
 3. 增加可选 Claude Code Stop hook adapter，将 `Completion Check.decision = continue` 映射为阻止停止。
 4. 增加独立 loop harness，让 copilot -> mentor -> copilot 循环可以脚本化执行。
 5. 接入更强的共享记忆后端，使导师能长期学习学生的研究背景、常见问题和反馈偏好。
-
-## Push to GitHub
-
-当前仓库已经本地初始化。检查并提交当前改动后，添加 remote 并 push：
-
-```bash
-git status
-git add README.md README_EN.md docs examples tests skills
-git commit -m "Add adversarial academic mentor-copilot skills"
-git remote add origin <your-repo-url>
-git push -u origin main
-```

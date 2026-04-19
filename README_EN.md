@@ -22,6 +22,26 @@ We deeply respect these scholars. This project does not reduce them to catchphra
 - A completion gate: when the goal is not met, the mentor returns `continue`, and the copilot executes only the next concrete revision task. Default maximum loop count is 3.
 - An extensible skill repo: source packs, memory protocols, Stop hook adapters, and standalone loop harnesses can be added over time.
 
+## Who This Is For
+
+- PhD students preparing proposals, thesis chapters, experiments, milestone reports, or defenses.
+- Researchers who need strict direction triage rather than generic brainstorming.
+- Academic writers who need claim-evidence checking before polishing.
+- Agent builders who want a reusable skill-level completion gate before implementing runtime hooks.
+
+## How It Works
+
+![How Academic Mentor Skill works](./assets/how-academic-mentor-skill-works.png)
+
+Default workflow:
+
+1. The user provides a research goal, paper section, proposal task, experiment plan, or defense issue.
+2. `academic-research-copilot` first imports research context: Zotero / PDFs / shared memory when available, or a low-confidence `Research Context Brief` from the user's stated direction.
+3. `academic-research-copilot` then executes: read, organize, plan, write, revise.
+4. `academic-mentor` reviews whether the goal is truly complete and whether the context basis is sufficient.
+5. If the mentor returns `continue`, the copilot only fixes the named blocking issue.
+6. Default `max_iterations = 3` to avoid infinite runs.
+
 ## Quick Demo
 
 Suppose you give the system a PhD proposal topic:
@@ -53,19 +73,6 @@ This is a good topic. You can develop it from data, models, and experiments.
 - If the work is not complete, what exactly must the copilot fix next?
 
 That is the core loop: **Copilot executes. Mentor gates. If the work is not complete, the system continues with a bounded revision task.**
-
-## How It Works
-
-![How Academic Mentor Skill works](./assets/how-academic-mentor-skill-works.png)
-
-Default workflow:
-
-1. The user provides a research goal, paper section, proposal task, experiment plan, or defense issue.
-2. `academic-research-copilot` first imports research context: Zotero / PDFs / shared memory when available, or a low-confidence `Research Context Brief` from the user's stated direction.
-3. `academic-research-copilot` then executes: read, organize, plan, write, revise.
-4. `academic-mentor` reviews whether the goal is truly complete and whether the context basis is sufficient.
-5. If the mentor returns `continue`, the copilot only fixes the named blocking issue.
-6. Default `max_iterations = 3` to avoid infinite runs.
 
 ## The Three Advisor Lenses
 
@@ -113,22 +120,15 @@ Use $academic-mentor in panel mode to stress-test my defense questions.
 Use both skills to keep improving this opening report until the mentor returns pass or stop-on-budget.
 ```
 
-## Who This Is For
-
-- PhD students preparing proposals, thesis chapters, experiments, milestone reports, or defenses.
-- Researchers who need strict direction triage rather than generic brainstorming.
-- Academic writers who need claim-evidence checking before polishing.
-- Agent builders who want a reusable skill-level completion gate before implementing runtime hooks.
-
 ## Respectful Use And Boundaries
 
 - We deeply respect Fei-Fei Li, Kaiming He, Mu Li, and other scholars. They are used as inspirations because their public academic work shows research taste, communication discipline, and mentoring patterns worth learning from.
-- This project does not simulate them, impersonate them, claim to represent their real opinions, or reduce them to performative speaking styles.
-- This is not an automatic science machine; it can review, decompose, and push work forward, but it cannot replace real experiments, advisor feedback, or domain validation.
-- This is not an infinite agent loop; the default budget is 3 iterations, after which the system must return `stop-on-budget` and remaining blockers.
-- This is not a generic writing polisher; if the problem definition or evidence chain is weak, the mentor points to the root contradiction first.
-- The shared memory protocol is defined, but persistent backend integration depends on the host agent framework.
-- High-stakes academic judgment must state `context_basis`; with only a one-line user prompt, the system should either give a low-confidence judgment or request Zotero/PDF/direction material.
+- The project learns from the judgment patterns visible in their public academic work. It does not try to speak for them or turn them into performative personas.
+- The system is useful for research judgment, background organization, experiment planning, and writing support, but it does not replace real experiments, advisor feedback, or domain validation.
+- The default budget is 3 iterations so the system can keep pushing incomplete work without drifting into endless loops.
+- When the problem definition or evidence chain is weak, the mentor points to the root contradiction before polishing language.
+- The shared memory protocol is defined, but persistent backend integration still depends on the host agent framework.
+- High-stakes academic judgment must state `context_basis`; with only a one-line prompt, the system should either give a low-confidence answer or ask for Zotero/PDF/direction material first.
 
 ## Repository Goals
 
@@ -248,15 +248,3 @@ academic-mentor-skill-repo/
 3. Add an optional Claude Code Stop hook adapter that maps `Completion Check.decision = continue` to a blocked stop event.
 4. Add a standalone loop harness for scriptable copilot -> mentor -> copilot execution.
 5. Integrate stronger shared memory backends so the mentor can learn the student's research background, recurring failure patterns, and feedback preferences over time.
-
-## Push to GitHub
-
-This repo has already been initialized locally. After reviewing and committing the current changes, publish with:
-
-```bash
-git status
-git add README.md README_EN.md docs examples tests skills
-git commit -m "Add adversarial academic mentor-copilot skills"
-git remote add origin <your-repo-url>
-git push -u origin main
-```
