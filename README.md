@@ -179,22 +179,6 @@ Use both skills to keep improving this opening report until the mentor returns p
 - [examples/mode-switch-prompts.md](./examples/mode-switch-prompts.md)
 - [tests/academic-persona-eval.md](./tests/academic-persona-eval.md)
 
-## Academic Focus
-
-重点适用场景：
-
-- 开题题目和研究内容是否成立
-- 研究方向是否值得继续
-- 论文是否在讲真问题
-- 方法是否大于问题
-- 实验链条是否足以支撑 claim
-- 答辩时哪里最容易被打穿
-
-当前 `paper` 能力拆分为两类：
-
-- `paper-logic`：先判断论文到底有没有在讲真问题、论证是否站得住。
-- `paper-strategy`：在方向基本成立的前提下，判断下一步最该怎么改、怎么补实验、怎么收贡献。
-
 ## Repository Layout
 
 ```text

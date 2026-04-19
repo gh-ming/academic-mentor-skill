@@ -180,22 +180,6 @@ See:
 - [examples/mode-switch-prompts.md](./examples/mode-switch-prompts.md)
 - [tests/academic-persona-eval.md](./tests/academic-persona-eval.md)
 
-## Academic Focus
-
-High-value use cases:
-
-- whether a proposal topic and research content are defensible
-- whether a research direction is worth continuing
-- whether a paper is solving a real problem
-- whether the method is larger than the problem
-- whether the experiment chain supports the claim
-- where a defense is most vulnerable
-
-The paper pathway is split into two submodes:
-
-- `paper-logic`: judge whether the paper is really solving a real problem and whether the argument stands.
-- `paper-strategy`: if the direction is broadly valid, decide what to revise next, what evidence to add, and what to cut or weaken.
-
 ## Repository Layout
 
 ```text
