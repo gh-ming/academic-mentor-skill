@@ -2,15 +2,33 @@
 
 [中文](./README.md) | English
 
-This repository packages an academic mentor-copilot skill system. It is not a generic coaching persona. `academic-research-copilot` executes academic work, while `academic-mentor` reviews whether the user's goal is complete. Together they support research direction triage, proposal review, paper-logic critique, defense preparation, milestone decisions, and bounded continue-until-complete loops.
+What if some of the world's strongest scientists could become your long-term research mentors, guiding your thesis, your research direction, and the way you learn to do science?
+
+Not just answering questions. Not just giving you more papers to read. A real mentor should narrow a vague direction, challenge a method-heavy but problem-light idea, ask whether your evidence supports your claim, and expose the dangerous weaknesses before a proposal defense or thesis defense does.
+
+This repo turns that idea into an installable skill system. One skill works with you as a research copilot: reading papers, organizing knowledge, planning experiments, and drafting academic writing. The other skill acts as a strict mentor: judging research direction, problem definition, evidence quality, and whether the task is truly complete. They are designed to disagree productively: the copilot executes, the mentor reviews, and the system continues when the user's goal has not been met.
+
+This is not a generic coaching persona. It is an academic mentor-copilot repository. `academic-research-copilot` executes academic work, while `academic-mentor` reviews whether the user's goal is complete. Together they support research direction triage, proposal review, paper-logic critique, defense preparation, milestone decisions, and bounded continue-until-complete loops.
+
+## Why This Exists
+
+Most AI academic assistants do not fail because they lack knowledge. They fail because they lack mentor-level judgment:
+
+- They can polish a sentence without noticing that the claim behind it is unsupported.
+- They can list many methods without asking whether those methods serve a clean problem.
+- They can encourage exploration without telling you when to narrow, gather evidence, or stop.
+- They can draft a proposal that looks complete without checking whether the title, research questions, technical route, and experiments actually cohere.
+
+This repo aims to turn an academic assistant into a research-training system: the copilot helps you do the work, and the mentor forces the work to become defensible.
 
 ## Repository Goals
 
-This repo does three things:
+This repo does four things:
 
 1. packages `academic-mentor` and `academic-research-copilot` into a dual-skill repo that can be installed or pushed to GitHub directly
 2. grounds the mentor in public-source-derived research judgment rules instead of superficial imitation
-3. upgrades the system into copilot execution plus mentor review, with bounded continuation and feedback-based weighting
+3. converts the mentor traits inspired by Fei-Fei Li, Kaiming He, and Mu Li into auditable, testable, internally weighted judgment mechanisms
+4. upgrades the system into copilot execution plus mentor review, with bounded continuation and feedback-based weighting
 
 ## What Is Included
 
