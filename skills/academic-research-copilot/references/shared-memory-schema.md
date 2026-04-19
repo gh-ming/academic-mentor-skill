@@ -13,6 +13,8 @@ Use this schema in both `academic-research-copilot` and `academic-mentor`.
 - `Goal Contract`
 - `Completion Check`
 - `Loop Trace`
+- `Student Alignment Profile`
+- `Mentor Interaction Trace`
 
 ## Academic Objects
 
@@ -35,3 +37,11 @@ Use this schema in both `academic-research-copilot` and `academic-mentor`.
 `Completion Check`: decision, completion score, missing requirements, blocking issues, next revision task, mentor reason.
 
 `Loop Trace`: iteration, copilot action, mentor decision, changes required, status.
+
+## Alignment Objects
+
+`Student Alignment Profile`: preferred guidance intensity, common failure patterns, accepted feedback patterns, resisted feedback patterns, learning stage by topic, mentor weight adjustments.
+
+`Mentor Interaction Trace`: task type, mentor internal weights, student response, advice adoption result, should adjust weights.
+
+Alignment memory changes how advice is prioritized and delivered. It must not rewrite source-grounded academic facts, paper cards, experiment results, or mentor core rules.

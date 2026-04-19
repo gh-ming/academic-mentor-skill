@@ -16,3 +16,10 @@ Use these operations across `academic-research-copilot` and `academic-mentor`.
 - Mentor writes `Completion Check`.
 - Copilot updates `Loop Trace` after acting on mentor review.
 - Do not promote temporary brainstorming into shared memory unless it affects future work.
+
+## Alignment Rules
+
+- Copilot may draft `Mentor Interaction Trace` after high-stakes mentor review.
+- Mentor owns high-value judgment fields such as `mentor_status`, `open_risks`, `must_fix`, `next_decision`, and `mentor_weight_adjustments`.
+- Student feedback may tune advisor emphasis gradually, not override source-grounded rules.
+- Never let a single emotional reaction erase a valid mentor criticism or rewrite the shared academic fact base.

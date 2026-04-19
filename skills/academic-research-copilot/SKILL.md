@@ -121,8 +121,11 @@ Use the shared academic memory protocol:
 - `Goal Contract`
 - `Completion Check`
 - `Loop Trace`
+- `Student Alignment Profile`
+- `Mentor Interaction Trace`
 
 Do not create a private memory model that conflicts with `academic-mentor`.
+Student feedback may adjust mentor weighting and delivery emphasis, but it must not rewrite factual academic memory or remove core mentor standards.
 
 ## Boundaries
 

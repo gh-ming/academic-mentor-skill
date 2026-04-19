@@ -2,24 +2,137 @@
 
 [中文](./README.md) | English
 
+A mentor-copilot skill system for PhD research, proposal defense, paper logic, experiment planning, and bounded academic task completion.
+
 What if some of the world's strongest scientists could become your long-term research mentors, guiding your thesis, your research direction, and the way you learn to do science?
 
 Not just answering questions. Not just giving you more papers to read. A real mentor should narrow a vague direction, challenge a method-heavy but problem-light idea, ask whether your evidence supports your claim, and expose the dangerous weaknesses before a proposal defense or thesis defense does.
 
 This repo turns that idea into an installable skill system. One skill works with you as a research copilot: reading papers, organizing knowledge, planning experiments, and drafting academic writing. The other skill acts as a strict mentor: judging research direction, problem definition, evidence quality, and whether the task is truly complete. They are designed to disagree productively: the copilot executes, the mentor reviews, and the system continues when the user's goal has not been met.
 
-This is not a generic coaching persona. It is an academic mentor-copilot repository. `academic-research-copilot` executes academic work, while `academic-mentor` reviews whether the user's goal is complete. Together they support research direction triage, proposal review, paper-logic critique, defense preparation, milestone decisions, and bounded continue-until-complete loops.
+It does not impersonate real scientists. It distills research judgment patterns from public papers, courses, interviews, talks, and project pages.
 
-## Why This Exists
+## What You Get
 
-Most AI academic assistants do not fail because they lack knowledge. They fail because they lack mentor-level judgment:
+- A long-term research copilot: read papers, organize knowledge, plan experiments, and maintain `Paper Card`, `Idea Card`, `Experiment Card`, and `Writing Brief` objects.
+- A strict academic mentor: judge whether a direction is worth doing, whether the problem is clean, whether the method serves the problem, and whether the evidence supports the claim.
+- A multi-advisor internal council: one unified mentor voice by default, internally informed by Fei-Fei / Kaiming / Li-Mu style judgment lenses.
+- A completion gate: when the goal is not met, the mentor returns `continue`, and the copilot executes only the next concrete revision task. Default maximum loop count is 3.
+- An extensible skill repo: source packs, memory protocols, Stop hook adapters, and standalone loop harnesses can be added over time.
 
-- They can polish a sentence without noticing that the claim behind it is unsupported.
-- They can list many methods without asking whether those methods serve a clean problem.
-- They can encourage exploration without telling you when to narrow, gather evidence, or stop.
-- They can draft a proposal that looks complete without checking whether the title, research questions, technical route, and experiments actually cohere.
+## Quick Demo
 
-This repo aims to turn an academic assistant into a research-training system: the copilot helps you do the work, and the mentor forces the work to become defensible.
+Suppose you give the system a PhD proposal topic:
+
+```text
+Robust Optical Remote Sensing Time-Series Modeling for Large-Scale Crop Mapping
+```
+
+A generic assistant may say:
+
+```text
+This is a good topic. You can develop it from data, models, and experiments.
+```
+
+`academic-research-copilot` first executes:
+
+- organizes background and related papers
+- extracts key problems such as crop mapping, optical satellite time series, missing observations, and cross-region generalization
+- drafts research questions, technical routes, experiment matrices, and writing briefs
+- produces a `Goal Contract` for mentor review
+
+`academic-mentor` then reviews:
+
+- Is the problem clean enough to support a PhD thesis?
+- Does the method serve large-scale crop mapping, or is it larger than the problem?
+- Do Sentinel-2 / GF-2 data, crop labels, regional transfer, and temporal-missingness experiments support the claims?
+- Are any terms wrong for the remote-sensing context, such as an inappropriate object-level transformation?
+- If the work is not complete, what exactly must the copilot fix next?
+
+That is the core loop: **Copilot executes. Mentor gates. If the work is not complete, the system continues with a bounded revision task.**
+
+## How It Works
+
+```mermaid
+flowchart LR
+  U["User Goal"] --> C["academic-research-copilot executes"]
+  C --> G["Goal Contract"]
+  G --> M["academic-mentor completion gate"]
+  M -->|pass| S["Stop and summarize"]
+  M -->|continue| R["Revision Task"]
+  R --> C
+  M -->|ask-user| Q["Ask user"]
+  M -->|stop-on-budget| B["Report blockers"]
+```
+
+Default workflow:
+
+1. The user provides a research goal, paper section, proposal task, experiment plan, or defense issue.
+2. `academic-research-copilot` executes: read, organize, plan, write, revise.
+3. `academic-mentor` reviews whether the goal is truly complete.
+4. If the mentor returns `continue`, the copilot only fixes the named blocking issue.
+5. Default `max_iterations = 3` to avoid infinite runs.
+
+## The Three Advisor Lenses
+
+| Internal advisor lens | What it does not mimic | What it actually does |
+| --- | --- | --- |
+| `Fei-Fei advisor` | Does not imitate voice or personal speaking habits | Judges research significance, academic framing, narrative coherence, and thesis-worthiness |
+| `Kaiming advisor` | Does not imitate compressed personal phrasing | Judges whether the problem is clean, whether the method is necessary, and whether complexity exceeds the problem |
+| `Li-Mu advisor` | Does not imitate lecture catchphrases | Decomposes learning paths, experiment routes, minimal validation loops, and next execution tasks |
+
+These lenses are distilled from public papers, project pages, courses, talks, and interviews. They are not three role-play characters. They are internal judgment signals synthesized into one mentor answer by default.
+
+## Installation
+
+Copy both skills into your local skills directory:
+
+```bash
+cp -R skills/academic-mentor ~/.codex/skills/
+cp -R skills/academic-research-copilot ~/.codex/skills/
+```
+
+If you use another agent framework, point it at:
+
+- `skills/academic-mentor/`
+- `skills/academic-research-copilot/`
+
+## Usage Examples
+
+```text
+Use $academic-research-copilot to read these crop-mapping PDFs and create Paper Cards.
+```
+
+```text
+Use $academic-mentor to judge whether my PhD proposal topic is defensible.
+```
+
+```text
+Use $academic-research-copilot to revise my experiment plan, then hand it to $academic-mentor for completion gate.
+```
+
+```text
+Use $academic-mentor in panel mode to stress-test my defense questions.
+```
+
+```text
+Use both skills to keep improving this opening report until the mentor returns pass or stop-on-budget.
+```
+
+## Who This Is For
+
+- PhD students preparing proposals, thesis chapters, experiments, milestone reports, or defenses.
+- Researchers who need strict direction triage rather than generic brainstorming.
+- Academic writers who need claim-evidence checking before polishing.
+- Agent builders who want a reusable skill-level completion gate before implementing runtime hooks.
+
+## Design Boundaries
+
+- This does not impersonate Fei-Fei Li, Kaiming He, Mu Li, or any real person.
+- This is not an automatic science machine; it can review, decompose, and push work forward, but it cannot replace real experiments, advisor feedback, or domain validation.
+- This is not an infinite agent loop; the default budget is 3 iterations, after which the system must return `stop-on-budget` and remaining blockers.
+- This is not a generic writing polisher; if the problem definition or evidence chain is weak, the mentor points to the root contradiction first.
+- The shared memory protocol is defined, but persistent backend integration depends on the host agent framework.
 
 ## Repository Goals
 
@@ -30,46 +143,6 @@ This repo does four things:
 3. converts the mentor traits inspired by Fei-Fei Li, Kaiming He, and Mu Li into auditable, testable, internally weighted judgment mechanisms
 4. upgrades the system into copilot execution plus mentor review, with bounded continuation and feedback-based weighting
 
-## What Is Included
-
-- installable skill:
-  - `skills/academic-mentor/`
-  - `skills/academic-research-copilot/`
-- repo-level methodology docs:
-  - `docs/skill-review-and-architecture.md`
-  - `docs/source-distillation-and-testing.md`
-  - `docs/persona-interaction-and-switching.md`
-  - `docs/adversarial-completion-loop.md`
-- examples and test design:
-  - `examples/mode-switch-prompts.md`
-  - `tests/academic-persona-eval.md`
-
-## Core Logic
-
-The skill's evaluation order is fixed:
-
-1. judge whether the problem is worth doing
-2. judge whether the method actually serves the problem
-3. judge whether the evidence supports the claim
-4. only then consider wording and presentation
-
-Its default product shape is now a unified mentor system:
-
-- the user sees one continuous mentor
-- internally the system runs three advisors
-- student feedback adjusts advisor weighting instead of rewriting factual memory
-
-The internal advisors are:
-
-- `Fei-Fei advisor`
-  - significance, larger scientific framing, narrative coherence
-- `Kaiming advisor`
-  - clean problem definition, method necessity, research taste
-- `Li-Mu advisor`
-  - decomposition, validation path, executable next steps
-
-These are internal judgment analyzers, not role-play personas.
-
 ## Source Distillation
 
 The repo already includes three source packs:
@@ -78,35 +151,29 @@ The repo already includes three source packs:
 - `kaiming-he-source-pack.md`
 - `li-mu-source-pack.md`
 
-To raise quality further, the skill should be distilled from richer source types:
+The distillation uses:
 
 - representative papers and project pages
 - official homepages and institutional materials
 - high-signal public lectures, talks, and videos
 - interviews that reveal durable research values
 
-The most important upgrade is not speech imitation but paper-expression distillation:
+The most important layer is not speech imitation but paper-expression distillation:
 
 - how papers define the real problem
 - how papers control contribution boundaries
 - how papers organize evidence and experiments
 - how papers handle limitations and avoid overclaim
 
-This layer is now explicit in the skill:
+Key materials:
 
 - `references/paper-first-distillation.md`
 - `references/research/fei-fei-li-paper-dna.md`
 - `references/research/kaiming-he-paper-dna.md`
 - `references/research/li-mu-paper-dna.md`
-
-It is now further refined into three representative paper-profile cards:
-
 - `references/research/fei-fei-li-paper-profile-card.md`
 - `references/research/kaiming-he-paper-profile-card.md`
 - `references/research/li-mu-paper-profile-card.md`
-
-and three representative paper-anchor notes:
-
 - `references/research/fei-fei-li-representative-paper-anchors.md`
 - `references/research/kaiming-he-representative-paper-anchors.md`
 - `references/research/li-mu-representative-paper-anchors.md`
@@ -119,65 +186,19 @@ See:
 
 ## Academic Focus
 
-The goal is not to make famous people "talk." The goal is to improve academic judgment quality in scenarios such as:
+High-value use cases:
 
-- whether a proposal topic is valid
-- whether a direction is worth continuing
+- whether a proposal topic and research content are defensible
+- whether a research direction is worth continuing
 - whether a paper is solving a real problem
 - whether the method is larger than the problem
+- whether the experiment chain supports the claim
 - where a defense is most vulnerable
 
-The paper pathway is now split into two submodes:
+The paper pathway is split into two submodes:
 
-- `paper-logic`
-  - judge whether the paper is really solving a real problem and whether the argument stands
-- `paper-strategy`
-  - if the direction is broadly valid, decide what to revise next, what evidence to add, and what to cut or weaken
-
-## Adversarial Completion Hook
-
-The repo now includes a skill-level completion-check protocol:
-
-- `academic-research-copilot` executes the task
-- `academic-mentor` judges whether the goal is complete
-- if mentor returns `continue`, copilot executes only the next mentor-specified revision task
-- default maximum loop count is 3
-
-Core objects:
-
-- `Goal Contract`
-- `Completion Check`
-- `Loop Trace`
-
-This is client-independent in v1. Future adapters can map it to Claude Code Stop hooks or an external harness.
-
-## Persona Interaction and Switching
-
-This is one of the most important next-stage enhancements.
-
-Recommended layers:
-
-- `integrated`
-  - default, one unified mentor voice with internal multi-advisor reasoning
-- `lens-switch`
-  - explicit emphasis on one advisor when the user wants one dominant viewpoint
-- `panel/debate`
-  - the three advisors review the same question, then synthesize a final judgment
-
-See:
-
-- [docs/persona-interaction-and-switching.md](./docs/persona-interaction-and-switching.md)
-
-## Installation
-
-Copy the skill into your local skills directory:
-
-```bash
-cp -R skills/academic-mentor ~/.codex/skills/
-cp -R skills/academic-research-copilot ~/.codex/skills/
-```
-
-If you use another agent framework, point it at `skills/academic-mentor/` and `skills/academic-research-copilot/`.
+- `paper-logic`: judge whether the paper is really solving a real problem and whether the argument stands.
+- `paper-strategy`: if the direction is broadly valid, decide what to revise next, what evidence to add, and what to cut or weaken.
 
 ## Repository Layout
 
@@ -185,7 +206,6 @@ If you use another agent framework, point it at `skills/academic-mentor/` and `s
 academic-mentor-skill-repo/
 ├── README.md
 ├── README_EN.md
-├── .gitignore
 ├── docs/
 │   ├── skill-review-and-architecture.md
 │   ├── source-distillation-and-testing.md
@@ -197,34 +217,23 @@ academic-mentor-skill-repo/
 │   └── academic-persona-eval.md
 └── skills/
     ├── academic-mentor/
-        ├── SKILL.md
-        ├── agents/
-        │   └── openai.yaml
-        └── references/
-            ├── advisor-persona.md
-            ├── advisor-expression-rules.md
-            ├── mentor-council.md
-            ├── source-grounding.md
-            ├── fei-fei-li-source-pack.md
-            ├── kaiming-he-source-pack.md
-            ├── li-mu-source-pack.md
-            ├── proposal-review-rubric.md
-            ├── research-direction-triage.md
-            ├── paper-guidance-rubric.md
-            ├── defense-prep-rubric.md
-            ├── milestone-review-rubric.md
-            ├── adversarial-completion-loop.md
-            ├── goal-contract-schema.md
-            ├── completion-gate-rubric.md
-            ├── loop-trace-schema.md
-            ├── phd-scenario-optimization.md
-            ├── student-feedback-learning.md
-            ├── shared-memory-schema.md
-            └── shared-memory-operations.md
+    │   ├── SKILL.md
+    │   ├── agents/openai.yaml
+    │   └── references/
+    │       ├── advisor-persona.md
+    │       ├── mentor-council.md
+    │       ├── source-grounding.md
+    │       ├── fei-fei-li-source-pack.md
+    │       ├── kaiming-he-source-pack.md
+    │       ├── li-mu-source-pack.md
+    │       ├── paper-first-distillation.md
+    │       ├── adversarial-completion-loop.md
+    │       ├── completion-gate-rubric.md
+    │       ├── shared-memory-schema.md
+    │       └── shared-memory-operations.md
     └── academic-research-copilot/
         ├── SKILL.md
-        ├── agents/
-        │   └── openai.yaml
+        ├── agents/openai.yaml
         └── references/
             ├── copilot-orchestration.md
             ├── adversarial-completion-loop.md
@@ -235,25 +244,13 @@ academic-mentor-skill-repo/
             └── shared-memory-operations.md
 ```
 
-The research evidence layer now also includes video distillation notes:
+## Roadmap
 
-- `references/research/video-source-map.md`
-- `references/research/fei-fei-li-video-card.md`
-- `references/research/kaiming-he-video-card.md`
-- `references/research/li-mu-video-card.md`
-
-It now also includes paper-DNA distillation notes:
-
-- `references/paper-first-distillation.md`
-- `references/research/fei-fei-li-paper-dna.md`
-- `references/research/kaiming-he-paper-dna.md`
-- `references/research/li-mu-paper-dna.md`
-- `references/research/fei-fei-li-paper-profile-card.md`
-- `references/research/kaiming-he-paper-profile-card.md`
-- `references/research/li-mu-paper-profile-card.md`
-- `references/research/fei-fei-li-representative-paper-anchors.md`
-- `references/research/kaiming-he-representative-paper-anchors.md`
-- `references/research/li-mu-representative-paper-anchors.md`
+1. Keep enriching the three advisor source packs with papers, project pages, talks, videos, and interviews.
+2. Add more real academic task tests: proposals, papers, experiment plans, defenses, and milestone reviews.
+3. Add an optional Claude Code Stop hook adapter that maps `Completion Check.decision = continue` to a blocked stop event.
+4. Add a standalone loop harness for scriptable copilot -> mentor -> copilot execution.
+5. Integrate stronger shared memory backends so the mentor can learn the student's research background, recurring failure patterns, and feedback preferences over time.
 
 ## Push to GitHub
 
@@ -266,13 +263,3 @@ git commit -m "Add adversarial academic mentor-copilot skills"
 git remote add origin <your-repo-url>
 git push -u origin main
 ```
-
-## Current Recommendations
-
-If you continue improving this repo, the best priority order is:
-
-1. keep enriching the three advisor source packs with papers, project pages, talks, videos, and interviews
-2. prioritize paper-derived judgment rules over interview-style tone refinement
-3. validate whether the unified-surface plus internal-council model remains stable
-4. use the built-in tests to check advisor differentiation and synthesis quality
-5. add an optional client-specific Stop hook or standalone harness only after the protocol is stable
