@@ -10,6 +10,7 @@ Use this schema in both `academic-research-copilot` and `academic-mentor`.
 - `Experiment Card`
 - `Writing Brief`
 - `Project State`
+- `Research Context Brief`
 - `Goal Contract`
 - `Completion Check`
 - `Loop Trace`
@@ -29,6 +30,8 @@ Use this schema in both `academic-research-copilot` and `academic-mentor`.
 `Writing Brief`: target document, target section, message, required evidence, naming constraints.
 
 `Project State`: main problem, active subproblems, current stage, open risks, next decisions.
+
+`Research Context Brief`: research direction, domain, core problem, known methods, known datasets, key constraints, representative sources, missing context, confidence.
 
 ## Loop Objects
 

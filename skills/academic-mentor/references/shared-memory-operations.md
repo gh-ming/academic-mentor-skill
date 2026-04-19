@@ -42,6 +42,8 @@ Primary updater for:
 Default behavior:
 
 - retrieve before judgment
+- require a `Research Profile`, `Project State`, relevant `Paper Card`, or `Research Context Brief` before high-confidence proposal, direction, paper, experiment, thesis, or defense judgment
+- if background is missing, return a context-missing gate or ask `academic-research-copilot` to run research context intake
 - do not create broad knowledge inventories
 - update shared memory only when the judgment materially affects future decisions
 - treat `Research Profile` as a read-mostly background object unless a high-confidence judgment materially reframes it
@@ -74,8 +76,10 @@ Do not promote:
 
 ## Completion Loop Rules
 
-- `academic-research-copilot` drafts `Goal Contract` and executes against it.
+- `academic-research-copilot` drafts `Research Context Brief` when durable research background is missing.
+- `academic-research-copilot` drafts `Goal Contract` with `context_basis` and executes against it.
 - `academic-mentor` writes `Completion Check`.
 - `academic-research-copilot` updates `Loop Trace` after acting on mentor review.
+- If `context_basis` is missing for a high-stakes task, `academic-mentor` should return `continue` or `ask-user` rather than `pass`.
 - If `Completion Check.decision = continue`, the next copilot task must be the mentor's `next_revision_task`.
 - If `Completion Check.decision = stop-on-budget`, neither skill should continue the loop without user confirmation.

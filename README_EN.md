@@ -16,7 +16,7 @@ It does not impersonate real scientists. It distills research judgment patterns 
 
 ## What You Get
 
-- A long-term research copilot: read papers, organize knowledge, plan experiments, and maintain `Paper Card`, `Idea Card`, `Experiment Card`, and `Writing Brief` objects.
+- A long-term research copilot: first build research context from Zotero, PDFs, or the user's stated direction, then read papers, organize knowledge, plan experiments, and maintain `Paper Card`, `Idea Card`, `Experiment Card`, and `Writing Brief` objects.
 - A strict academic mentor: judge whether a direction is worth doing, whether the problem is clean, whether the method serves the problem, and whether the evidence supports the claim.
 - A multi-advisor internal council: one unified mentor voice by default, internally informed by Fei-Fei / Kaiming / Li-Mu style judgment lenses.
 - A completion gate: when the goal is not met, the mentor returns `continue`, and the copilot executes only the next concrete revision task. Default maximum loop count is 3.
@@ -38,10 +38,11 @@ This is a good topic. You can develop it from data, models, and experiments.
 
 `academic-research-copilot` first executes:
 
+- builds a `Research Context Brief` from Zotero, PDFs, existing memory, or the user's stated research direction
 - organizes background and related papers
 - extracts key problems such as crop mapping, optical satellite time series, missing observations, and cross-region generalization
 - drafts research questions, technical routes, experiment matrices, and writing briefs
-- produces a `Goal Contract` for mentor review
+- produces a `Goal Contract` with `context_basis` for mentor review
 
 `academic-mentor` then reviews:
 
@@ -57,8 +58,9 @@ That is the core loop: **Copilot executes. Mentor gates. If the work is not comp
 
 ```mermaid
 flowchart LR
-  U["User Goal"] --> C["academic-research-copilot executes"]
-  C --> G["Goal Contract"]
+  U["User Goal"] --> I["Research Context Intake"]
+  I --> C["academic-research-copilot executes"]
+  C --> G["Goal Contract with context_basis"]
   G --> M["academic-mentor completion gate"]
   M -->|pass| S["Stop and summarize"]
   M -->|continue| R["Revision Task"]
@@ -70,10 +72,11 @@ flowchart LR
 Default workflow:
 
 1. The user provides a research goal, paper section, proposal task, experiment plan, or defense issue.
-2. `academic-research-copilot` executes: read, organize, plan, write, revise.
-3. `academic-mentor` reviews whether the goal is truly complete.
-4. If the mentor returns `continue`, the copilot only fixes the named blocking issue.
-5. Default `max_iterations = 3` to avoid infinite runs.
+2. `academic-research-copilot` first imports research context: Zotero / PDFs / shared memory when available, or a low-confidence `Research Context Brief` from the user's stated direction.
+3. `academic-research-copilot` then executes: read, organize, plan, write, revise.
+4. `academic-mentor` reviews whether the goal is truly complete and whether the context basis is sufficient.
+5. If the mentor returns `continue`, the copilot only fixes the named blocking issue.
+6. Default `max_iterations = 3` to avoid infinite runs.
 
 ## The Three Advisor Lenses
 
@@ -135,6 +138,7 @@ Use both skills to keep improving this opening report until the mentor returns p
 - This is not an infinite agent loop; the default budget is 3 iterations, after which the system must return `stop-on-budget` and remaining blockers.
 - This is not a generic writing polisher; if the problem definition or evidence chain is weak, the mentor points to the root contradiction first.
 - The shared memory protocol is defined, but persistent backend integration depends on the host agent framework.
+- High-stakes academic judgment must state `context_basis`; with only a one-line user prompt, the system should either give a low-confidence judgment or request Zotero/PDF/direction material.
 
 ## Repository Goals
 
@@ -238,6 +242,7 @@ academic-mentor-skill-repo/
         ├── agents/openai.yaml
         └── references/
             ├── copilot-orchestration.md
+            ├── research-context-intake.md
             ├── adversarial-completion-loop.md
             ├── goal-contract-schema.md
             ├── completion-gate-rubric.md

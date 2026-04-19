@@ -78,6 +78,20 @@ Use for paper sections, proposal sections, thesis writing, review responses, and
 
 Use as the high-level snapshot for the user's active research line.
 
+### `Research Context Brief`
+
+- `research_direction`
+- `domain`
+- `core_problem`
+- `known_methods`
+- `known_datasets`
+- `key_constraints`
+- `representative_sources`
+- `missing_context`
+- `confidence`: `high | medium | low`
+
+Use as the minimum background object before proposal, direction, paper, experiment, thesis, or defense judgment.
+
 ### `Student Alignment Profile`
 
 - `preferred_guidance_intensity`
@@ -105,6 +119,8 @@ Use for repeated mentoring threads where the system needs a sparse trace of whet
 - `success_criteria`
 - `deliverables`
 - `constraints`
+- `context_basis`
+- `context_confidence`
 - `out_of_scope`
 - `max_iterations`
 - `current_iteration`

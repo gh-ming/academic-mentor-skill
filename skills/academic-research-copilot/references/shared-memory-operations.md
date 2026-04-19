@@ -12,9 +12,11 @@ Use these operations across `academic-research-copilot` and `academic-mentor`.
 
 ## Loop Rules
 
-- Copilot drafts `Goal Contract` and `Loop Trace`.
+- Copilot drafts `Research Context Brief` when durable research background is missing.
+- Copilot drafts `Goal Contract` with `context_basis` and `Loop Trace`.
 - Mentor writes `Completion Check`.
 - Copilot updates `Loop Trace` after acting on mentor review.
+- Do not hand high-stakes tasks to mentor without explicit `context_basis` and `context_confidence`.
 - Do not promote temporary brainstorming into shared memory unless it affects future work.
 
 ## Alignment Rules

@@ -16,7 +16,7 @@
 
 ## What You Get
 
-- 一个长期科研助手：阅读论文、整理知识、规划实验、沉淀 `Paper Card`、`Idea Card`、`Experiment Card` 和 `Writing Brief`。
+- 一个长期科研助手：先从 Zotero、PDF 或用户给出的研究方向建立背景，再阅读论文、整理知识、规划实验、沉淀 `Paper Card`、`Idea Card`、`Experiment Card` 和 `Writing Brief`。
 - 一个严格学术导师：判断方向是否值得做、问题是否干净、方法是否服务于问题、证据是否支撑 claim。
 - 一个多导师协同系统：默认输出一个统一导师声音，内部用 Fei-Fei / Kaiming / Li-Mu 三类视角做交叉审查。
 - 一个完成检查机制：任务没达到目标时，导师返回 `continue`，助手只执行下一轮明确修订任务，默认最多 3 轮。
@@ -38,10 +38,11 @@
 
 `academic-research-copilot` 会先执行：
 
+- 从 Zotero、PDF、已有记忆或用户给出的研究方向建立 `Research Context Brief`
 - 整理研究背景和相关论文
 - 抽取作物制图、光学遥感时间序列、缺失观测、跨区域泛化等关键问题
 - 生成研究问题、技术路线、实验矩阵和写作 brief
-- 形成可交给导师审查的 `Goal Contract`
+- 形成带 `context_basis` 的 `Goal Contract`
 
 `academic-mentor` 会进一步审查：
 
@@ -57,8 +58,9 @@
 
 ```mermaid
 flowchart LR
-  U["User Goal"] --> C["academic-research-copilot executes"]
-  C --> G["Goal Contract"]
+  U["User Goal"] --> I["Research Context Intake"]
+  I --> C["academic-research-copilot executes"]
+  C --> G["Goal Contract with context_basis"]
   G --> M["academic-mentor completion gate"]
   M -->|pass| S["Stop and summarize"]
   M -->|continue| R["Revision Task"]
@@ -70,10 +72,11 @@ flowchart LR
 默认流程：
 
 1. 用户给出研究目标、论文片段、开题任务、实验计划或答辩问题。
-2. `academic-research-copilot` 负责执行：读、整理、规划、写、改。
-3. `academic-mentor` 负责审查：判断目标是否真正完成。
-4. 如果导师返回 `continue`，助手只处理导师指定的阻塞问题，不重新发散。
-5. 默认 `max_iterations = 3`，避免无限循环。
+2. `academic-research-copilot` 先做研究背景导入：优先用 Zotero / PDF / 共享记忆，其次用用户给出的研究方向建立低置信 `Research Context Brief`。
+3. `academic-research-copilot` 再执行：读、整理、规划、写、改。
+4. `academic-mentor` 负责审查：判断目标是否真正完成，以及背景依据是否足够。
+5. 如果导师返回 `continue`，助手只处理导师指定的阻塞问题，不重新发散。
+6. 默认 `max_iterations = 3`，避免无限循环。
 
 ## The Three Advisor Lenses
 
@@ -135,6 +138,7 @@ Use both skills to keep improving this opening report until the mentor returns p
 - 这不是无限运行 agent；默认最多 3 轮，超过后必须返回 `stop-on-budget` 和剩余阻塞点。
 - 这不是泛用写作润色器；如果问题定义或证据链不成立，导师会先指出根本矛盾。
 - 共享记忆协议已经定义，但具体持久化后端取决于宿主 agent 框架。
+- 高风险学术判断必须声明 `context_basis`；如果只有用户一句话，系统只能给低置信判断或要求补充 Zotero/PDF/方向资料。
 
 ## Repository Goals
 
@@ -238,6 +242,7 @@ academic-mentor-skill-repo/
         ├── agents/openai.yaml
         └── references/
             ├── copilot-orchestration.md
+            ├── research-context-intake.md
             ├── adversarial-completion-loop.md
             ├── goal-contract-schema.md
             ├── completion-gate-rubric.md

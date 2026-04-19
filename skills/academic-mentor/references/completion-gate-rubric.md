@@ -17,6 +17,8 @@ Use this rubric when `academic-mentor` judges whether copilot should stop or con
 - `blocking_issues`
 - `next_revision_task`
 - `mentor_reason`
+- `context_basis`
+- `context_confidence`
 
 ## Decision Rules
 
@@ -24,12 +26,14 @@ Return `pass` when:
 
 - required deliverables exist
 - hard constraints are followed
+- context basis is adequate for the academic judgment
 - no blocking issue prevents use
 
 Return `continue` when:
 
 - a required deliverable is missing
 - a hard constraint is violated
+- `context_basis` is missing or too weak for a defensible academic judgment
 - terminology or logic undermines the user's goal
 - a clear next revision task exists
 
@@ -37,6 +41,7 @@ Return `ask-user` when:
 
 - success criteria conflict
 - a research judgment requires user preference
+- required Zotero/PDF/source material is unavailable and cannot be safely inferred
 - continuing would change scope materially
 
 Return `stop-on-budget` when:

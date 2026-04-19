@@ -11,18 +11,20 @@ The copilot performs the work. The mentor decides whether the user's stated goal
 
 ## Loop
 
-1. Build a `Goal Contract`.
-2. Copilot executes the requested work.
-3. Mentor reviews against the `Goal Contract`.
-4. Mentor returns one `Completion Check`.
-5. If `pass`, the loop stops.
-6. If `continue`, copilot executes only `next_revision_task`.
-7. If `ask-user`, pause for user input.
-8. If `stop-on-budget`, stop and report remaining blockers.
+1. Build or retrieve research context from shared memory, Zotero, PDFs, files, or the user's stated direction.
+2. Build a `Goal Contract` with `context_basis` and `context_confidence`.
+3. Copilot executes the requested work.
+4. Mentor reviews against the `Goal Contract` and context basis.
+5. Mentor returns one `Completion Check`.
+6. If `pass`, the loop stops.
+7. If `continue`, copilot executes only `next_revision_task`.
+8. If `ask-user`, pause for user input.
+9. If `stop-on-budget`, stop and report remaining blockers.
 
 ## Defaults
 
 - `max_iterations = 3`
+- high-stakes academic tasks require `context_basis`
 - do not broaden scope after iteration 1
 - do not optimize for perfection; optimize for the user's stated goal
 - do not loop on optional improvements

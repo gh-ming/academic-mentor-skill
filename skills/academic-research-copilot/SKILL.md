@@ -25,12 +25,29 @@ This skill is an orchestrator and executor, not the final judge.
 Default workflow:
 
 1. infer the user goal
-2. build or recover a `Goal Contract`
-3. retrieve relevant shared academic memory
-4. route to the best specialist skill
-5. execute the task
-6. hand off to `academic-mentor` for completion gate when the task is high-stakes
-7. continue only from mentor-specified revision tasks
+2. run the `Research Context Intake Gate`
+3. build or recover a `Goal Contract` with explicit `context_basis`
+4. retrieve relevant shared academic memory
+5. route to the best specialist skill
+6. execute the task
+7. hand off to `academic-mentor` for completion gate when the task is high-stakes
+8. continue only from mentor-specified revision tasks
+
+## Research Context Intake Gate
+
+Before answering high-stakes academic tasks, establish enough background to avoid generic advice.
+
+Read `references/research-context-intake.md` when the task involves proposals, research direction, paper logic, experiments, thesis planning, or defense preparation.
+
+Default intake order:
+
+1. retrieve existing `Research Profile`, `Project State`, relevant `Paper Card`, `Idea Card`, `Experiment Card`, and `Writing Brief`
+2. if the profile is missing or stale, import from Zotero, local PDFs, or files/directories the user provides
+3. if no files are available, extract a lightweight `Research Context Brief` from the user's stated research direction, keywords, title, datasets, methods, and constraints
+4. mark confidence as `high | medium | low`
+5. only then execute writing, ideation, experiment planning, or mentor handoff
+
+Do not fabricate background. If context is insufficient for a defensible answer, say what source is missing and proceed only with a low-confidence brief or ask for the missing input.
 
 ## Task Types
 
@@ -57,12 +74,13 @@ Read these references when the user wants the system to keep working until the t
 
 Default loop:
 
-1. Copilot executes against `Goal Contract`.
-2. Mentor performs `Completion Check`.
-3. If `pass`, stop and summarize.
-4. If `continue`, run only the `next_revision_task`.
-5. If `ask-user`, pause and ask for the missing decision.
-6. If `stop-on-budget`, stop and report remaining blockers.
+1. Copilot builds or retrieves research context.
+2. Copilot executes against `Goal Contract` with `context_basis`.
+3. Mentor performs `Completion Check`.
+4. If `pass`, stop and summarize.
+5. If `continue`, run only the `next_revision_task`.
+6. If `ask-user`, pause and ask for the missing decision.
+7. If `stop-on-budget`, stop and report remaining blockers.
 
 Default `max_iterations = 3`.
 
@@ -118,6 +136,7 @@ Use the shared academic memory protocol:
 - `Experiment Card`
 - `Writing Brief`
 - `Project State`
+- `Research Context Brief`
 - `Goal Contract`
 - `Completion Check`
 - `Loop Trace`

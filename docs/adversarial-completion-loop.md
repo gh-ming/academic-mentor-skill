@@ -34,6 +34,8 @@ Each loop starts from a `Goal Contract`:
 - `success_criteria`
 - `deliverables`
 - `constraints`
+- `context_basis`
+- `context_confidence`
 - `out_of_scope`
 - `max_iterations`
 - `current_iteration`
@@ -54,6 +56,8 @@ Each iteration appends a `Loop Trace`:
 - `mentor_decision`
 - `changes_required`
 - `status`
+
+Before building the `Goal Contract`, high-stakes academic tasks should run research context intake from shared memory, Zotero, PDFs, user-provided files, or the user's stated direction. The resulting context basis must be visible to the mentor gate.
 
 The canonical schemas live inside each skill's `references/` directory so both skills use the same object definitions.
 

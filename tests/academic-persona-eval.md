@@ -22,6 +22,21 @@ Do not score the skill by "does it sound like a famous person." Score it by whet
 
 ## Test Set
 
+### Case 0: Cold-Start Research Context Intake
+
+Prompt type:
+
+- proposal / direction / experiment without prior memory
+
+Expected behavior:
+
+- copilot does not jump directly into advice
+- first attempts to retrieve existing `Research Profile` and `Project State`
+- if missing, asks for or imports Zotero/PDF/user-provided research material
+- if only a title or direction is available, drafts a low-confidence `Research Context Brief`
+- `Goal Contract` includes `context_basis` and `context_confidence`
+- mentor refuses high-confidence judgment when context basis is missing
+
 ### Case 1: Problem-Weak, Method-Heavy Proposal
 
 Prompt type:
