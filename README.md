@@ -12,7 +12,7 @@
 
 这个仓库试图把这种“引路人”做成可运行的 skill 系统：一个助手负责和你一起读论文、整理知识、推进写作和实验；一个导师负责从更高标准审查研究方向、问题定义、证据链和完成质量。两者不是互相附和，而是在“助手执行 + 导师审查 + 未完成则继续”的对抗式闭环中，帮助你把科研任务真正做到可交付。
 
-它不复刻任何真实学者，也不模仿名人口吻；它蒸馏的是公开论文、课程、访谈和项目中体现出的研究判断方式。
+我们十分尊重这些杰出的学者，因此不会把他们简化成“名人口吻”或角色扮演。这个项目学习的是他们在公开论文、课程、访谈和项目中体现出的研究判断方式：如何选择重要问题，如何控制贡献边界，如何组织证据，如何指导学生把想法落到可验证的研究工作中。
 
 ## What You Get
 
@@ -58,19 +58,6 @@
 
 ![How Academic Mentor Skill works](./assets/how-academic-mentor-skill-works.png)
 
-```mermaid
-flowchart LR
-  U["User Goal"] --> I["Research Context Intake"]
-  I --> C["academic-research-copilot executes"]
-  C --> G["Goal Contract with context_basis"]
-  G --> M["academic-mentor completion gate"]
-  M -->|pass| S["Stop and summarize"]
-  M -->|continue| R["Revision Task"]
-  R --> C
-  M -->|ask-user| Q["Ask user"]
-  M -->|stop-on-budget| B["Report blockers"]
-```
-
 默认流程：
 
 1. 用户给出研究目标、论文片段、开题任务、实验计划或答辩问题。
@@ -82,13 +69,13 @@ flowchart LR
 
 ## The Three Advisor Lenses
 
-| 内部导师视角 | 不模仿什么 | 实际负责什么 |
+| 内部导师视角 | 尊重方式 | 实际负责什么 |
 | --- | --- | --- |
-| `Fei-Fei advisor` | 不模仿语气或个人表达习惯 | 判断研究意义、学术图景、故事线、问题是否值得成为博士主线 |
-| `Kaiming advisor` | 不模仿短句风格或个人口吻 | 判断问题是否干净、方法是否必要、复杂度是否超过问题本身 |
-| `Li-Mu advisor` | 不模仿课程口头禅 | 拆解学习路径、实验路线、最小可验证闭环和下一步执行任务 |
+| `Fei-Fei advisor` | 学习其公开工作中对大问题、研究意义和学术叙事的重视 | 判断研究意义、学术图景、故事线、问题是否值得成为博士主线 |
+| `Kaiming advisor` | 学习其公开论文中对干净问题、本质方法和简洁贡献的追求 | 判断问题是否干净、方法是否必要、复杂度是否超过问题本身 |
+| `Li-Mu advisor` | 学习其公开课程和技术写作中清晰拆解、工程落地和教学式推进的方式 | 拆解学习路径、实验路线、最小可验证闭环和下一步执行任务 |
 
-这些视角来自公开论文、项目页、课程、talk 和访谈的规则蒸馏。它们不是三个角色聊天，而是内部 judgment signals，默认由一个统一导师声音输出。
+这些视角来自公开论文、项目页、课程、talk 和访谈的规则蒸馏。它们不是三个角色聊天，更不是代替本人发言，而是内部 judgment signals，默认由一个统一导师声音输出。
 
 ## Installation
 
@@ -133,9 +120,10 @@ Use both skills to keep improving this opening report until the mentor returns p
 - 研究方向探索者：需要判断方向该继续、收缩、补证据还是放弃。
 - Agent builder：想把“助手执行 + 导师审查 + 有界续跑”做成可复用 skill 协议。
 
-## Design Boundaries
+## Respectful Use And Boundaries
 
-- 这不是对李飞飞、何凯明、李沐本人的模拟，也不声称代表他们的真实意见。
+- 我们非常尊重李飞飞、何凯明、李沐等学者；使用他们作为灵感来源，是因为他们的公开学术产物体现了值得学习的研究品味、表达能力和指导方式。
+- 这个项目不模拟本人，不冒充本人，不声称代表他们的真实意见，也不把他们简化成表演式口吻。
 - 这不是自动科研系统；它能审查、拆解和推进任务，但不能替代真实实验、导师反馈和领域验证。
 - 这不是无限运行 agent；默认最多 3 轮，超过后必须返回 `stop-on-budget` 和剩余阻塞点。
 - 这不是泛用写作润色器；如果问题定义或证据链不成立，导师会先指出根本矛盾。
@@ -147,7 +135,7 @@ Use both skills to keep improving this opening report until the mentor returns p
 这个仓库解决四件事：
 
 1. 把 `academic-mentor` 和 `academic-research-copilot` 封装成可直接安装、可直接推送 GitHub 的双 skill 仓库。
-2. 把导师人格从“模仿名人说话”收束到“基于公开来源提炼研究判断规则”。
+2. 把导师人格从“表层人设”收束到“以尊重为前提、基于公开来源提炼研究判断规则”。
 3. 将李飞飞、何凯明、李沐三类导师特质转化为可审查、可测试、可切换权重的内部判断机制。
 4. 将其升级为“助手执行 + 导师审查 + 有界续跑 + 反馈调权学习”的学术协作系统。
 

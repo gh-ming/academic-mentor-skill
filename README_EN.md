@@ -12,7 +12,7 @@ Not just answering questions. Not just giving you more papers to read. A real me
 
 This repo turns that idea into an installable skill system. One skill works with you as a research copilot: reading papers, organizing knowledge, planning experiments, and drafting academic writing. The other skill acts as a strict mentor: judging research direction, problem definition, evidence quality, and whether the task is truly complete. They are designed to disagree productively: the copilot executes, the mentor reviews, and the system continues when the user's goal has not been met.
 
-It does not impersonate real scientists. It distills research judgment patterns from public papers, courses, interviews, talks, and project pages.
+We deeply respect these scholars. This project does not reduce them to catchphrases or role-play. It studies research judgment patterns visible in their public papers, courses, interviews, talks, and project pages: how they choose important problems, control contribution boundaries, organize evidence, and help ideas become verifiable research work.
 
 ## What You Get
 
@@ -58,19 +58,6 @@ That is the core loop: **Copilot executes. Mentor gates. If the work is not comp
 
 ![How Academic Mentor Skill works](./assets/how-academic-mentor-skill-works.png)
 
-```mermaid
-flowchart LR
-  U["User Goal"] --> I["Research Context Intake"]
-  I --> C["academic-research-copilot executes"]
-  C --> G["Goal Contract with context_basis"]
-  G --> M["academic-mentor completion gate"]
-  M -->|pass| S["Stop and summarize"]
-  M -->|continue| R["Revision Task"]
-  R --> C
-  M -->|ask-user| Q["Ask user"]
-  M -->|stop-on-budget| B["Report blockers"]
-```
-
 Default workflow:
 
 1. The user provides a research goal, paper section, proposal task, experiment plan, or defense issue.
@@ -82,13 +69,13 @@ Default workflow:
 
 ## The Three Advisor Lenses
 
-| Internal advisor lens | What it does not mimic | What it actually does |
+| Internal advisor lens | Respectful grounding | What it actually does |
 | --- | --- | --- |
-| `Fei-Fei advisor` | Does not imitate voice or personal speaking habits | Judges research significance, academic framing, narrative coherence, and thesis-worthiness |
-| `Kaiming advisor` | Does not imitate compressed personal phrasing | Judges whether the problem is clean, whether the method is necessary, and whether complexity exceeds the problem |
-| `Li-Mu advisor` | Does not imitate lecture catchphrases | Decomposes learning paths, experiment routes, minimal validation loops, and next execution tasks |
+| `Fei-Fei advisor` | Respectfully learns from public work that emphasizes big questions, significance, and research narrative | Judges research significance, academic framing, narrative coherence, and thesis-worthiness |
+| `Kaiming advisor` | Respectfully learns from public papers that pursue clean problems, essential methods, and compact contributions | Judges whether the problem is clean, whether the method is necessary, and whether complexity exceeds the problem |
+| `Li-Mu advisor` | Respectfully learns from public courses and technical writing that emphasize clear decomposition, engineering grounding, and teachable execution | Decomposes learning paths, experiment routes, minimal validation loops, and next execution tasks |
 
-These lenses are distilled from public papers, project pages, courses, talks, and interviews. They are not three role-play characters. They are internal judgment signals synthesized into one mentor answer by default.
+These lenses are distilled from public papers, project pages, courses, talks, and interviews. They are not three role-play characters, and they do not speak on behalf of the real people. They are internal judgment signals synthesized into one mentor answer by default.
 
 ## Installation
 
@@ -133,9 +120,10 @@ Use both skills to keep improving this opening report until the mentor returns p
 - Academic writers who need claim-evidence checking before polishing.
 - Agent builders who want a reusable skill-level completion gate before implementing runtime hooks.
 
-## Design Boundaries
+## Respectful Use And Boundaries
 
-- This does not impersonate Fei-Fei Li, Kaiming He, Mu Li, or any real person.
+- We deeply respect Fei-Fei Li, Kaiming He, Mu Li, and other scholars. They are used as inspirations because their public academic work shows research taste, communication discipline, and mentoring patterns worth learning from.
+- This project does not simulate them, impersonate them, claim to represent their real opinions, or reduce them to performative speaking styles.
 - This is not an automatic science machine; it can review, decompose, and push work forward, but it cannot replace real experiments, advisor feedback, or domain validation.
 - This is not an infinite agent loop; the default budget is 3 iterations, after which the system must return `stop-on-budget` and remaining blockers.
 - This is not a generic writing polisher; if the problem definition or evidence chain is weak, the mentor points to the root contradiction first.
@@ -147,7 +135,7 @@ Use both skills to keep improving this opening report until the mentor returns p
 This repo does four things:
 
 1. packages `academic-mentor` and `academic-research-copilot` into a dual-skill repo that can be installed or pushed to GitHub directly
-2. grounds the mentor in public-source-derived research judgment rules instead of superficial imitation
+2. grounds the mentor in respectful, public-source-derived research judgment rules instead of superficial persona design
 3. converts the mentor traits inspired by Fei-Fei Li, Kaiming He, and Mu Li into auditable, testable, internally weighted judgment mechanisms
 4. upgrades the system into copilot execution plus mentor review, with bounded continuation and feedback-based weighting
 
