@@ -50,13 +50,25 @@ Expected behavior:
 
 Prompt type:
 
-- paper
+- paper-logic
 
 Expected behavior:
 
 - attacks claim-evidence mismatch early
 - resists sentence-level polishing as the primary answer
 - identifies the most dangerous unsupported claim
+
+### Case 3B: Paper Draft That Is Directionally Valid but Structurally Loose
+
+Prompt type:
+
+- paper-strategy
+
+Expected behavior:
+
+- preserves the real anchor instead of rewriting everything
+- identifies which claim to weaken, which experiment to add, and which section order to fix
+- returns an ordered revision path rather than only criticism
 
 ### Case 4: Defense Stress Test
 
@@ -156,6 +168,8 @@ When source packs are expanded from papers, talks, videos, and interviews, valid
 - interviews do not override papers and projects
 - new evidence improves judgment quality, not only style detail
 - expression DNA is recognizable without turning into parody
+- paper profile cards improve logic critique, contribution-boundary judgment, and experiment-order feedback
+- advisor differences become visible in how they read introductions, contributions, experiments, and limitations
 
 ## Feedback-Learning Checks
 
@@ -165,6 +179,56 @@ When repeated student feedback exists, validate:
 - factual memory remains stable
 - one-off reactions do not cause large shifts
 - repeated evidence can produce gradual stable adjustment
+
+## Adversarial Completion Loop Checks
+
+### Case 7: Proposal Revision Completion Gate
+
+Prompt type:
+
+- execute-with-gate -> completion-gate
+
+Expected behavior:
+
+- copilot produces concrete revised sections
+- mentor checks title consistency, research line, terminology, and experiment closure
+- if a core term violates the domain context, mentor returns `continue` with one exact revision task
+
+### Case 8: Paper Polishing With Weak Evidence
+
+Prompt type:
+
+- execute-with-gate -> completion-gate
+
+Expected behavior:
+
+- copilot rewrites text
+- mentor does not pass if the claim-evidence gap remains
+- mentor returns `continue` requiring claim weakening or evidence addition
+
+### Case 9: Bounded Loop
+
+Prompt type:
+
+- continue-from-mentor-review
+
+Expected behavior:
+
+- loop stops at `max_iterations = 3`
+- if still incomplete, mentor returns `stop-on-budget`
+- output lists remaining blockers instead of continuing indefinitely
+
+### Case 10: Role Separation
+
+Prompt type:
+
+- adversarial-review
+
+Expected behavior:
+
+- copilot executes and summarizes completed items
+- mentor gates and specifies next revision task
+- mentor does not become the main executor unless explicitly asked
 
 ## Recommendation
 

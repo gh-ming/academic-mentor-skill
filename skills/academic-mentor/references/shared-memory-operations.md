@@ -71,3 +71,11 @@ Do not promote:
 - if a new result conflicts with existing memory, refine or update rather than duplicating
 - if certainty is low, keep uncertainty explicit instead of overwriting earlier conclusions
 - student preference can adjust advisor weighting, but cannot directly rewrite factual research memory
+
+## Completion Loop Rules
+
+- `academic-research-copilot` drafts `Goal Contract` and executes against it.
+- `academic-mentor` writes `Completion Check`.
+- `academic-research-copilot` updates `Loop Trace` after acting on mentor review.
+- If `Completion Check.decision = continue`, the next copilot task must be the mentor's `next_revision_task`.
+- If `Completion Check.decision = stop-on-budget`, neither skill should continue the loop without user confirmation.

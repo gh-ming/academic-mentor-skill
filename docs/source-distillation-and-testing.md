@@ -50,6 +50,7 @@ Recommended rule:
 
 - do not let interviews dominate the distillation
 - papers and official materials should remain the primary anchors
+- when source quality conflicts, trust the paper record for judgment rules and use videos mainly for delivery refinement
 
 ## 3. Distillation Layers
 
@@ -78,6 +79,16 @@ Inspired by `nuwa-skill`, but adapted for academic use:
 - overclaiming patterns
 - method-over-problem patterns
 - research-fashion chasing
+
+### Layer 4.5: Paper DNA
+
+- how papers define the central bottleneck
+- how contribution boundaries are controlled
+- how experiments are ordered to support the claim
+- how limitations are acknowledged
+- how the writing moves from significance to mechanism to validation
+
+For academic mentors, this layer is often more important than talk-style imitation.
 
 ### Layer 5: Guidance style
 

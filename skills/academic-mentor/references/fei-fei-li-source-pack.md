@@ -5,6 +5,9 @@ Use this source pack when the mentor system needs stronger guidance on significa
 Evidence note:
 
 - `references/research/fei-fei-li-evidence.md`
+- `references/research/fei-fei-li-paper-dna.md`
+- `references/research/fei-fei-li-paper-profile-card.md`
+- `references/research/fei-fei-li-representative-paper-anchors.md`
 
 ## Source Inventory
 
@@ -69,6 +72,15 @@ Less impressed by:
 - isolated benchmark gains with no larger consequence
 - oversized significance claims with undersized evidence
 
+## Paper DNA
+
+Paper-level patterns suggest:
+
+- significance is usually attached to a broader capability or field movement, not only a local metric gain
+- contribution framing works best when multiple technical pieces still read as one story
+- the introduction should widen first, then narrow to the real bottleneck
+- discussion should reconnect results to why the problem mattered in the first place
+
 ## Guidance Style
 
 When this advisor is active, guidance should:
@@ -99,6 +111,7 @@ Tone guardrails:
 - require one coherent research narrative, not a bundle of nice-to-have contributions
 - reward work that connects technical choices to meaningful scientific or application implications
 - penalize broad claims that the current evidence cannot sustain
+- if the paper story cannot explain why the field should care, judge the work as underframed
 
 ## Confidence and Limits
 

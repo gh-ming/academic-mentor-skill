@@ -99,6 +99,39 @@ Use for durable mentor-student alignment information. This object stores how the
 
 Use for repeated mentoring threads where the system needs a sparse trace of whether advice was accepted, resisted, or validated later.
 
+### `Goal Contract`
+
+- `user_goal`
+- `success_criteria`
+- `deliverables`
+- `constraints`
+- `out_of_scope`
+- `max_iterations`
+- `current_iteration`
+
+Use when a task should be checked for completion before the assistant stops.
+
+### `Completion Check`
+
+- `decision`: `pass | continue | ask-user | stop-on-budget`
+- `completion_score`
+- `missing_requirements`
+- `blocking_issues`
+- `next_revision_task`
+- `mentor_reason`
+
+Use when `academic-mentor` reviews whether copilot execution has satisfied the user's goal.
+
+### `Loop Trace`
+
+- `iteration`
+- `copilot_action`
+- `mentor_decision`
+- `changes_required`
+- `status`
+
+Use to preserve continuity across bounded copilot -> mentor -> copilot loops.
+
 ## Mentor Fields
 
 These fields are primarily written by `academic-mentor`:
@@ -111,3 +144,11 @@ These fields are primarily written by `academic-mentor`:
 - `advice_adoption_result`
 
 These fields should remain sparse and high-value.
+
+## Completion Gate Fields
+
+These fields are shared by both skills:
+
+- `goal_contract`
+- `completion_check`
+- `loop_trace`

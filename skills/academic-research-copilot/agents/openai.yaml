@@ -1,0 +1,4 @@
+interface:
+  display_name: "Academic Research Copilot"
+  short_description: "Execution-focused research copilot that works with academic-mentor completion gates"
+  default_prompt: "Use $academic-research-copilot to execute my academic task, then hand high-stakes outputs to $academic-mentor for completion gating before stopping."

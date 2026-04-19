@@ -2,24 +2,26 @@
 
 [中文](./README.md) | English
 
-This repository packages `academic-mentor` as a publishable academic skill repository. It is not a generic coaching persona. It is a strict doctoral-level mentor skill for research direction triage, proposal review, paper-logic critique, defense preparation, and milestone decisions.
+This repository packages an academic mentor-copilot skill system. It is not a generic coaching persona. `academic-research-copilot` executes academic work, while `academic-mentor` reviews whether the user's goal is complete. Together they support research direction triage, proposal review, paper-logic critique, defense preparation, milestone decisions, and bounded continue-until-complete loops.
 
 ## Repository Goals
 
 This repo does three things:
 
-1. packages `academic-mentor` into a standalone skill repo that can be installed or pushed to GitHub directly
+1. packages `academic-mentor` and `academic-research-copilot` into a dual-skill repo that can be installed or pushed to GitHub directly
 2. grounds the mentor in public-source-derived research judgment rules instead of superficial imitation
-3. upgrades it into a unified mentor system with an internal three-advisor council and feedback-based weighting
+3. upgrades the system into copilot execution plus mentor review, with bounded continuation and feedback-based weighting
 
 ## What Is Included
 
 - installable skill:
   - `skills/academic-mentor/`
+  - `skills/academic-research-copilot/`
 - repo-level methodology docs:
   - `docs/skill-review-and-architecture.md`
   - `docs/source-distillation-and-testing.md`
   - `docs/persona-interaction-and-switching.md`
+  - `docs/adversarial-completion-loop.md`
 - examples and test design:
   - `examples/mode-switch-prompts.md`
   - `tests/academic-persona-eval.md`
@@ -65,6 +67,32 @@ To raise quality further, the skill should be distilled from richer source types
 - high-signal public lectures, talks, and videos
 - interviews that reveal durable research values
 
+The most important upgrade is not speech imitation but paper-expression distillation:
+
+- how papers define the real problem
+- how papers control contribution boundaries
+- how papers organize evidence and experiments
+- how papers handle limitations and avoid overclaim
+
+This layer is now explicit in the skill:
+
+- `references/paper-first-distillation.md`
+- `references/research/fei-fei-li-paper-dna.md`
+- `references/research/kaiming-he-paper-dna.md`
+- `references/research/li-mu-paper-dna.md`
+
+It is now further refined into three representative paper-profile cards:
+
+- `references/research/fei-fei-li-paper-profile-card.md`
+- `references/research/kaiming-he-paper-profile-card.md`
+- `references/research/li-mu-paper-profile-card.md`
+
+and three representative paper-anchor notes:
+
+- `references/research/fei-fei-li-representative-paper-anchors.md`
+- `references/research/kaiming-he-representative-paper-anchors.md`
+- `references/research/li-mu-representative-paper-anchors.md`
+
 See:
 
 - [docs/source-distillation-and-testing.md](./docs/source-distillation-and-testing.md)
@@ -80,6 +108,30 @@ The goal is not to make famous people "talk." The goal is to improve academic ju
 - whether a paper is solving a real problem
 - whether the method is larger than the problem
 - where a defense is most vulnerable
+
+The paper pathway is now split into two submodes:
+
+- `paper-logic`
+  - judge whether the paper is really solving a real problem and whether the argument stands
+- `paper-strategy`
+  - if the direction is broadly valid, decide what to revise next, what evidence to add, and what to cut or weaken
+
+## Adversarial Completion Hook
+
+The repo now includes a skill-level completion-check protocol:
+
+- `academic-research-copilot` executes the task
+- `academic-mentor` judges whether the goal is complete
+- if mentor returns `continue`, copilot executes only the next mentor-specified revision task
+- default maximum loop count is 3
+
+Core objects:
+
+- `Goal Contract`
+- `Completion Check`
+- `Loop Trace`
+
+This is client-independent in v1. Future adapters can map it to Claude Code Stop hooks or an external harness.
 
 ## Persona Interaction and Switching
 
@@ -104,9 +156,10 @@ Copy the skill into your local skills directory:
 
 ```bash
 cp -R skills/academic-mentor ~/.codex/skills/
+cp -R skills/academic-research-copilot ~/.codex/skills/
 ```
 
-If you use another agent framework, point it at `skills/academic-mentor/`.
+If you use another agent framework, point it at `skills/academic-mentor/` and `skills/academic-research-copilot/`.
 
 ## Repository Layout
 
@@ -118,13 +171,14 @@ academic-mentor-skill-repo/
 ├── docs/
 │   ├── skill-review-and-architecture.md
 │   ├── source-distillation-and-testing.md
-│   └── persona-interaction-and-switching.md
+│   ├── persona-interaction-and-switching.md
+│   └── adversarial-completion-loop.md
 ├── examples/
 │   └── mode-switch-prompts.md
 ├── tests/
 │   └── academic-persona-eval.md
 └── skills/
-    └── academic-mentor/
+    ├── academic-mentor/
         ├── SKILL.md
         ├── agents/
         │   └── openai.yaml
@@ -141,8 +195,24 @@ academic-mentor-skill-repo/
             ├── paper-guidance-rubric.md
             ├── defense-prep-rubric.md
             ├── milestone-review-rubric.md
+            ├── adversarial-completion-loop.md
+            ├── goal-contract-schema.md
+            ├── completion-gate-rubric.md
+            ├── loop-trace-schema.md
             ├── phd-scenario-optimization.md
             ├── student-feedback-learning.md
+            ├── shared-memory-schema.md
+            └── shared-memory-operations.md
+    └── academic-research-copilot/
+        ├── SKILL.md
+        ├── agents/
+        │   └── openai.yaml
+        └── references/
+            ├── copilot-orchestration.md
+            ├── adversarial-completion-loop.md
+            ├── goal-contract-schema.md
+            ├── completion-gate-rubric.md
+            ├── loop-trace-schema.md
             ├── shared-memory-schema.md
             └── shared-memory-operations.md
 ```
@@ -154,11 +224,27 @@ The research evidence layer now also includes video distillation notes:
 - `references/research/kaiming-he-video-card.md`
 - `references/research/li-mu-video-card.md`
 
+It now also includes paper-DNA distillation notes:
+
+- `references/paper-first-distillation.md`
+- `references/research/fei-fei-li-paper-dna.md`
+- `references/research/kaiming-he-paper-dna.md`
+- `references/research/li-mu-paper-dna.md`
+- `references/research/fei-fei-li-paper-profile-card.md`
+- `references/research/kaiming-he-paper-profile-card.md`
+- `references/research/li-mu-paper-profile-card.md`
+- `references/research/fei-fei-li-representative-paper-anchors.md`
+- `references/research/kaiming-he-representative-paper-anchors.md`
+- `references/research/li-mu-representative-paper-anchors.md`
+
 ## Push to GitHub
 
-This repo has already been initialized and committed locally. To publish:
+This repo has already been initialized locally. After reviewing and committing the current changes, publish with:
 
 ```bash
+git status
+git add README.md README_EN.md docs examples tests skills
+git commit -m "Add adversarial academic mentor-copilot skills"
 git remote add origin <your-repo-url>
 git push -u origin main
 ```
@@ -168,6 +254,7 @@ git push -u origin main
 If you continue improving this repo, the best priority order is:
 
 1. keep enriching the three advisor source packs with papers, project pages, talks, videos, and interviews
-2. validate whether the unified-surface plus internal-council model remains stable
-3. use the built-in tests to check advisor differentiation and synthesis quality
-4. only then consider packaging `academic-research-copilot` as a sibling skill
+2. prioritize paper-derived judgment rules over interview-style tone refinement
+3. validate whether the unified-surface plus internal-council model remains stable
+4. use the built-in tests to check advisor differentiation and synthesis quality
+5. add an optional client-specific Stop hook or standalone harness only after the protocol is stable

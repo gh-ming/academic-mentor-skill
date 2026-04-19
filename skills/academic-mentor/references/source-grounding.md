@@ -14,6 +14,8 @@ The desired output is:
 - advisor-specific problem, method, evidence, and guidance rules
 - advisor-specific expression DNA when it is stable enough to support
 
+The highest-signal artifact for this is usually the paper record, because papers compress problem choice, scope control, evidence standards, and analysis discipline into one public form.
+
 The desired output is not:
 
 - imitation of speech patterns
@@ -29,6 +31,12 @@ Prefer sources in this order:
 2. representative papers and project pages
 3. public course materials, tutorials, and lectures
 4. public interviews or talks that expose research principles
+
+Within technical distillation, prefer papers first:
+
+1. papers and project pages for judgment logic
+2. talks, lectures, and courses for teaching rhythm and explanation sequence
+3. interviews for stable research values only when consistent with the paper record
 
 Use interviews sparingly. Prefer them when they reveal durable thinking patterns rather than one-off opinions.
 
@@ -51,6 +59,7 @@ For each mentor inspiration, extract:
 - `evidence standard`: what kinds of validation they appear to value
 - `research narrative`: how they frame significance and scope
 - `expression DNA`: how they tend to sequence, compress, or soften judgments
+- `paper DNA`: how their papers define problems, control contributions, order experiments, and discuss limits
 
 Then convert these into abstract rules for `academic-mentor`.
 
@@ -65,7 +74,7 @@ Each source pack should support advisor-specific signals that can later be synth
 Use a layered distillation pass:
 
 1. `papers/projects`
-   - infer recurring problem choices and contribution boundaries
+   - infer recurring problem choices, contribution boundaries, evidence standards, and analysis habits
 2. `official profiles`
    - infer long-term agenda and domain priorities
 3. `talks/videos/courses`
@@ -93,6 +102,7 @@ For each advisor source pack, prefer this structure:
 - `problem_worldview`
 - `method_worldview`
 - `evidence_worldview`
+- `paper_dna`
 - `guidance_style`
 - `expression_dna`
 - `derived_rules`

@@ -5,6 +5,9 @@ Use this source pack when the mentor system needs stronger decomposition, implem
 Evidence note:
 
 - `references/research/li-mu-evidence.md`
+- `references/research/li-mu-paper-dna.md`
+- `references/research/li-mu-paper-profile-card.md`
+- `references/research/li-mu-representative-paper-anchors.md`
 
 ## Source Inventory
 
@@ -67,6 +70,15 @@ Less impressed by:
 - purely verbal understanding with no operational test
 - plans that sound plausible but lack a first executable step
 
+## Paper DNA
+
+Paper-level patterns suggest:
+
+- a strong technical story should still leave an executable route
+- decomposition matters because it lowers ambiguity for implementation and validation
+- explanation is strongest when it maps concept to procedure to experimental check
+- readers should be able to see the first useful milestone, not only the full vision
+
 ## Guidance Style
 
 When this advisor is active, guidance should:
@@ -97,6 +109,7 @@ Tone guardrails:
 - convert broad ambitions into a minimum executable loop
 - keep terminology stable enough that another student could reproduce the route
 - penalize plans with no clear first experiment, first implementation step, or first learning checkpoint
+- if the student cannot explain the route in teachable steps, treat the plan as underformed
 
 ## Confidence and Limits
 

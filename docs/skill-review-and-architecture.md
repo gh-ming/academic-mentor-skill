@@ -124,8 +124,26 @@ This structure keeps the skill stable under real academic use:
 
 It also makes the skill easier to publish:
 
-- the installable artifact is just `skills/academic-mentor/`
+- the installable artifacts are `skills/academic-mentor/` and `skills/academic-research-copilot/`
 - the repo-level docs explain the architecture without polluting the skill folder itself
+
+## Adversarial Completion Layer
+
+The repo now packages the mentor and copilot as a dual-skill system:
+
+- `academic-research-copilot` executes academic tasks against a `Goal Contract`
+- `academic-mentor` reviews completion through a `Completion Check`
+- failed checks return a concrete `Revision Task`
+- `Loop Trace` records each round of execution, review, and continuation
+
+This is a protocol-level hook rather than a client-specific integration. The first implementation keeps the loop bounded by default with `max_iterations = 3`, so the system can continue when the user's goal is not complete without turning into an infinite agent run.
+
+The key invariant is role separation:
+
+- the copilot is responsible for doing the work
+- the mentor is responsible for judging whether the user's goal is complete
+- the mentor can request another round, but the copilot must only execute the requested revision task
+- after the budget is exhausted, the mentor must return `stop-on-budget` with remaining blockers
 
 ## Future Extension Points
 
@@ -135,4 +153,5 @@ It also makes the skill easier to publish:
 - add canonical feedback-learning examples once enough real mentoring traces exist
 - split `paper` into `paper-logic` and `paper-strategy` if usage diverges
 - add examples or tests outside the skill folder if you want a contributor workflow
-- package `academic-research-copilot` as a sibling repo or mono-repo later
+- add a Claude Code Stop Hook adapter that maps `Completion Check.decision = continue` to a blocked stop event
+- add a standalone loop harness for copilot -> mentor -> copilot execution when a client does not provide native hooks

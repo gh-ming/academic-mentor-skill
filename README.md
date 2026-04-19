@@ -2,24 +2,26 @@
 
 中文 | [English](./README_EN.md)
 
-一个面向学术场景的 `academic-mentor` skill 仓库。它不是通用陪聊人格，而是一个严格的博士导师型判断 skill，用来处理研究方向筛选、开题把关、论文逻辑审查、答辩准备和阶段性研究决策。
+一个面向学术场景的导师-助手协作 skill 仓库。它不是通用陪聊人格，而是由 `academic-research-copilot` 执行、`academic-mentor` 审查的双 skill 系统，用来处理研究方向筛选、开题把关、论文逻辑审查、答辩准备、阶段性研究决策，以及“目标未完成则有界续跑”的学术任务闭环。
 
 ## 仓库目标
 
 这个仓库解决三件事：
 
-1. 把 `academic-mentor` 封装成可直接安装、可直接推送 GitHub 的独立 skill 仓库
+1. 把 `academic-mentor` 和 `academic-research-copilot` 封装成可直接安装、可直接推送 GitHub 的双 skill 仓库
 2. 把导师人格从“模仿名人说话”收束到“基于公开来源提炼研究判断规则”
-3. 将其升级为“统一导师表层 + 三导师内部协同 + 反馈调权学习”的导师系统
+3. 将其升级为“助手执行 + 导师审查 + 有界续跑 + 反馈调权学习”的学术协作系统
 
 ## 仓库内容
 
 - 可安装 skill：
   - `skills/academic-mentor/`
+  - `skills/academic-research-copilot/`
 - 仓库级方法文档：
   - `docs/skill-review-and-architecture.md`
   - `docs/source-distillation-and-testing.md`
   - `docs/persona-interaction-and-switching.md`
+  - `docs/adversarial-completion-loop.md`
 - 示例与测试设计：
   - `examples/mode-switch-prompts.md`
   - `tests/academic-persona-eval.md`
@@ -65,6 +67,32 @@
 - 高信号公开课程、talk、lecture 和 video
 - 能反映稳定研究观的访谈
 
+其中最重要的一层不是“语气模仿”，而是“论文表达蒸馏”：
+
+- 论文如何定义问题
+- 论文如何控制贡献边界
+- 论文如何组织证据与实验
+- 论文如何处理局限、风险与不过度宣称
+
+这一层现在已经被显式写入 skill 结构，见：
+
+- `references/paper-first-distillation.md`
+- `references/research/fei-fei-li-paper-dna.md`
+- `references/research/kaiming-he-paper-dna.md`
+- `references/research/li-mu-paper-dna.md`
+
+并进一步细化为三张“代表论文写作剖面卡”：
+
+- `references/research/fei-fei-li-paper-profile-card.md`
+- `references/research/kaiming-he-paper-profile-card.md`
+- `references/research/li-mu-paper-profile-card.md`
+
+以及三份“代表论文锚点”：
+
+- `references/research/fei-fei-li-representative-paper-anchors.md`
+- `references/research/kaiming-he-representative-paper-anchors.md`
+- `references/research/li-mu-representative-paper-anchors.md`
+
 具体方法与建议见：
 
 - [docs/source-distillation-and-testing.md](./docs/source-distillation-and-testing.md)
@@ -80,6 +108,30 @@
 - 论文是否在讲真问题
 - 方法是否大于问题
 - 答辩时哪里最容易被打穿
+
+当前 `paper` 能力已进一步拆分为两类：
+
+- `paper-logic`
+  - 先判断论文到底有没有在讲真问题、论证是否站得住
+- `paper-strategy`
+  - 在方向基本成立的前提下，判断下一步最该怎么改、怎么补实验、怎么收贡献
+
+## 对抗式完成检查 Hook
+
+仓库现在加入了 skill 协议层的完成检查机制：
+
+- `academic-research-copilot` 负责执行任务
+- `academic-mentor` 负责判断目标是否完成
+- 若导师返回 `continue`，助手只执行导师给出的下一轮任务
+- 默认最多 3 轮，避免无限运行
+
+核心对象：
+
+- `Goal Contract`
+- `Completion Check`
+- `Loop Trace`
+
+这是一套客户端无关协议。后续可以映射到 Claude Code Stop hook 或独立 harness，但第一版不绑定具体客户端。
 
 ## 人格交互与切换
 
@@ -104,9 +156,10 @@
 
 ```bash
 cp -R skills/academic-mentor ~/.codex/skills/
+cp -R skills/academic-research-copilot ~/.codex/skills/
 ```
 
-如果你使用的是其他 agent 框架，只要它支持技能目录加载，也可以直接指向 `skills/academic-mentor/`。
+如果你使用的是其他 agent 框架，只要它支持技能目录加载，也可以直接指向 `skills/academic-mentor/` 和 `skills/academic-research-copilot/`。
 
 ## 仓库结构
 
@@ -118,13 +171,14 @@ academic-mentor-skill-repo/
 ├── docs/
 │   ├── skill-review-and-architecture.md
 │   ├── source-distillation-and-testing.md
-│   └── persona-interaction-and-switching.md
+│   ├── persona-interaction-and-switching.md
+│   └── adversarial-completion-loop.md
 ├── examples/
 │   └── mode-switch-prompts.md
 ├── tests/
 │   └── academic-persona-eval.md
 └── skills/
-    └── academic-mentor/
+    ├── academic-mentor/
         ├── SKILL.md
         ├── agents/
         │   └── openai.yaml
@@ -141,8 +195,24 @@ academic-mentor-skill-repo/
             ├── paper-guidance-rubric.md
             ├── defense-prep-rubric.md
             ├── milestone-review-rubric.md
+            ├── adversarial-completion-loop.md
+            ├── goal-contract-schema.md
+            ├── completion-gate-rubric.md
+            ├── loop-trace-schema.md
             ├── phd-scenario-optimization.md
             ├── student-feedback-learning.md
+            ├── shared-memory-schema.md
+            └── shared-memory-operations.md
+    └── academic-research-copilot/
+        ├── SKILL.md
+        ├── agents/
+        │   └── openai.yaml
+        └── references/
+            ├── copilot-orchestration.md
+            ├── adversarial-completion-loop.md
+            ├── goal-contract-schema.md
+            ├── completion-gate-rubric.md
+            ├── loop-trace-schema.md
             ├── shared-memory-schema.md
             └── shared-memory-operations.md
 ```
@@ -154,11 +224,27 @@ academic-mentor-skill-repo/
 - `references/research/kaiming-he-video-card.md`
 - `references/research/li-mu-video-card.md`
 
+并新增论文表达蒸馏资料：
+
+- `references/paper-first-distillation.md`
+- `references/research/fei-fei-li-paper-dna.md`
+- `references/research/kaiming-he-paper-dna.md`
+- `references/research/li-mu-paper-dna.md`
+- `references/research/fei-fei-li-paper-profile-card.md`
+- `references/research/kaiming-he-paper-profile-card.md`
+- `references/research/li-mu-paper-profile-card.md`
+- `references/research/fei-fei-li-representative-paper-anchors.md`
+- `references/research/kaiming-he-representative-paper-anchors.md`
+- `references/research/li-mu-representative-paper-anchors.md`
+
 ## 推送到 GitHub
 
-当前仓库已经本地初始化并提交。后续只需要添加 remote 并 push：
+当前仓库已经本地初始化。检查并提交当前改动后，添加 remote 并 push：
 
 ```bash
+git status
+git add README.md README_EN.md docs examples tests skills
+git commit -m "Add adversarial academic mentor-copilot skills"
 git remote add origin <your-repo-url>
 git push -u origin main
 ```
@@ -168,6 +254,7 @@ git push -u origin main
 如果下一步继续增强这个仓库，优先级建议是：
 
 1. 继续按论文、项目页、公开视频、访谈扩充三位导师源包
-2. 优先验证“统一导师表层 + 三导师协同 + 反馈调权”是否稳定成立
-3. 用仓库内测试集检查多导师差异性和综合输出质量
-4. 再考虑是否把 `academic-research-copilot` 作为兄弟 skill 一起封装
+2. 优先用论文表达而不是访谈口吻来强化三位导师的判断规则
+3. 验证“统一导师表层 + 三导师协同 + 反馈调权”是否稳定成立
+4. 用仓库内测试集检查多导师差异性和综合输出质量
+5. 在协议稳定后，再增加客户端级 Stop hook adapter 或独立 loop harness
