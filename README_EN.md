@@ -2,6 +2,8 @@
 
 [中文](./README.md) | English
 
+![Academic Mentor Skill hero illustration](./assets/academic-mentor-skill-hero.png)
+
 A mentor-copilot skill system for PhD research, proposal defense, paper logic, experiment planning, and bounded academic task completion.
 
 What if some of the world's strongest scientists could become your long-term research mentors, guiding your thesis, your research direction, and the way you learn to do science?

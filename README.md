@@ -2,6 +2,8 @@
 
 中文 | [English](./README_EN.md)
 
+![Academic Mentor Skill hero illustration](./assets/academic-mentor-skill-hero.png)
+
 一个面向博士科研、开题、论文逻辑和答辩准备的导师-助手协作 Skill 系统。
 
 你是否想过：如果世界上顶级的科学家能够成为你的长期导师，会怎样指导你的毕业论文、研究方向和科研训练？
