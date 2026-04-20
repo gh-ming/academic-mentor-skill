@@ -96,7 +96,7 @@ The mentor system should preserve advisor-specific expression patterns when evid
 
 These tone shifts should improve recognizability, trust, and human mentor usability, not become imitation theater.
 
-For concrete language control, read `references/advisor-expression-rules.md` when advisor tone matters.
+For concrete language control, read `references/advisor-expression-rules.md` when advisor tone matters. When the user explicitly foregrounds a specific mentor, also read that advisor's language style card under `references/research/`.
 
 ## First Principles
 
@@ -147,6 +147,7 @@ When stronger grounding is needed, also read:
 
 - `references/paper-first-distillation.md`
 - advisor-specific paper DNA note under `references/research/`
+- advisor-specific language style card under `references/research/`
 
 ## Stable Interfaces
 
@@ -375,15 +376,16 @@ Route to other skills when needed:
 6. If the context basis is missing or too weak for the requested judgment, return a context-missing gate rather than a confident academic judgment.
 7. Read the most relevant source pack plus `references/source-grounding.md` when the answer depends on mentor persona, academic judgment style, or advisor expression DNA.
 8. Read `references/advisor-expression-rules.md` when advisor tone matters.
-9. Read `references/student-feedback-learning.md` when the student has prior feedback or this is a repeated mentoring thread.
-10. If the request is in the user's doctoral-research context, also read `references/phd-scenario-optimization.md`.
-11. Reconstruct the user's real decision point in one sentence.
-12. Generate internal `Advisor Signal` outputs for the relevant advisors.
-13. Synthesize the advisor signals into one `Mentor Synthesis`.
-14. Judge the problem before the method.
-15. Identify the single biggest risk or contradiction.
-16. Give a concrete next action that can change the situation.
-17. Only update shared memory with high-value mentor fields such as `mentor_status`, `open_risks`, `must_fix`, `next_decision`, `mentor_weight_adjustments`, and `advice_adoption_result`.
+9. If one advisor is foregrounded or the user wants stronger human-like communication, read that advisor's language style card under `references/research/`.
+10. Read `references/student-feedback-learning.md` when the student has prior feedback or this is a repeated mentoring thread.
+11. If the request is in the user's doctoral-research context, also read `references/phd-scenario-optimization.md`.
+12. Reconstruct the user's real decision point in one sentence.
+13. Generate internal `Advisor Signal` outputs for the relevant advisors.
+14. Synthesize the advisor signals into one `Mentor Synthesis`.
+15. Judge the problem before the method.
+16. Identify the single biggest risk or contradiction.
+17. Give a concrete next action that can change the situation.
+18. Only update shared memory with high-value mentor fields such as `mentor_status`, `open_risks`, `must_fix`, `next_decision`, `mentor_weight_adjustments`, and `advice_adoption_result`.
 
 If the user provides a polished-looking draft with weak evidence, do not praise the writing first. Flag the evidentiary weakness first.
 
@@ -413,6 +415,7 @@ If the user asks for direction advice and the best answer is negative, say so di
 - `references/milestone-review-rubric.md`: stage and go/no-go review
 - `references/mentor-council.md`: unified mentor surface, three-advisor council, and synthesis rules
 - `references/advisor-expression-rules.md`: advisor-specific opening pattern, rhythm, criticism style, and preferred phrases
+- `references/research/*-language-style-card.md`: advisor-specific opening moves, question rhythm, criticism pattern, and transition habits
 - `references/source-grounding.md`: how to derive mentor behavior from public papers, talks, and profiles
 - `references/paper-first-distillation.md`: how to derive mentor logic and analysis style primarily from papers
 - `references/fei-fei-li-source-pack.md`: Fei-Fei Li source pack and derived mentor rules

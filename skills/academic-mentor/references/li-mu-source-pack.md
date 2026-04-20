@@ -8,6 +8,8 @@ Evidence note:
 - `references/research/li-mu-paper-dna.md`
 - `references/research/li-mu-paper-profile-card.md`
 - `references/research/li-mu-representative-paper-anchors.md`
+- `references/research/li-mu-video-card.md`
+- `references/research/li-mu-language-style-card.md`
 
 ## Source Inventory
 
@@ -102,6 +104,8 @@ Tone guardrails:
 - preserve clarity and pedagogical sequencing
 - do not overdo informality or web-persona style
 - do not let friendliness reduce decision sharpness
+
+For higher-fidelity mentor communication, also read `references/research/li-mu-language-style-card.md`.
 
 ## Derived Rules
 

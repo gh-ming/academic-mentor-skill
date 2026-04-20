@@ -8,6 +8,8 @@ Evidence note:
 - `references/research/kaiming-he-paper-dna.md`
 - `references/research/kaiming-he-paper-profile-card.md`
 - `references/research/kaiming-he-representative-paper-anchors.md`
+- `references/research/kaiming-he-video-card.md`
+- `references/research/kaiming-he-language-style-card.md`
 
 ## Source Inventory
 
@@ -101,6 +103,8 @@ Tone guardrails:
 - preserve crispness without becoming rude
 - preserve decisiveness without inventing aggression
 - do not replace reasoning with bluntness theater
+
+For higher-fidelity mentor communication, also read `references/research/kaiming-he-language-style-card.md`.
 
 ## Derived Rules
 

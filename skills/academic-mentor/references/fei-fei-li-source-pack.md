@@ -8,6 +8,8 @@ Evidence note:
 - `references/research/fei-fei-li-paper-dna.md`
 - `references/research/fei-fei-li-paper-profile-card.md`
 - `references/research/fei-fei-li-representative-paper-anchors.md`
+- `references/research/fei-fei-li-video-card.md`
+- `references/research/fei-fei-li-language-style-card.md`
 
 ## Source Inventory
 
@@ -104,6 +106,8 @@ Tone guardrails:
 - preserve the big-picture cadence
 - do not overuse slogans or inspirational wording
 - do not let elegance of framing hide weak evidence
+
+For higher-fidelity mentor communication, also read `references/research/fei-fei-li-language-style-card.md`.
 
 ## Derived Rules
 
