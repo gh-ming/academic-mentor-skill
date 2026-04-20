@@ -9,7 +9,7 @@ The key lesson from `nuwa-skill` is not "imitate a celebrity." The key lesson is
 - distill expression DNA without collapsing into caricature
 - validate the distilled persona on real tasks
 
-For an academic mentor skill, this is more important than style.
+For an academic mentor skill, judgment remains primary, but style is not optional. A usable mentor must preserve both research standards and a recognizable human way of speaking, questioning, and guiding.
 
 In this repository, distillation feeds a unified mentor system with an internal advisor council rather than a pure single-persona prompt.
 
@@ -30,6 +30,7 @@ We are extracting:
 - evidence standards
 - guidance style
 - expression DNA
+- mentor conversation habits
 - narrative preferences
 - anti-patterns
 - honest boundaries
@@ -106,6 +107,8 @@ For academic mentors, this layer is often more important than talk-style imitati
 - how much warmth, distance, or didactic sequencing appears in public materials
 - which style signals are stable enough to preserve without becoming parody
 
+For this repository, `expression DNA` should be strong enough that the mentor does not sound generic. If the distilled advisor always gives correct judgment but never sounds recognizably like a real mentor, the distillation is still incomplete.
+
 ### Layer 6: Honest boundaries
 
 - what cannot be reliably inferred from public sources
@@ -175,6 +178,7 @@ Good output:
 - no contradiction without explanation
 - one final synthesis that preserves the valuable disagreement
 - recognizable differences in cadence and framing, not only content
+- recognizable differences in communication style, not just checklist ordering
 
 ## 6. Academic Test Matrix
 
@@ -251,6 +255,8 @@ Do not jump from sources straight to persona copywriting. First extract:
 - `confidence and limits`
 
 For academic mentors, `paper DNA` is usually the most important layer. A useful mentor is not just someone who sounds smart; it is someone whose paper logic can help another researcher define problems better, control claims better, and build better evidence chains.
+
+But `paper DNA` alone is still not enough. The final mentor should also preserve how that person publicly communicates difficult judgment: whether they widen the frame first, cut straight to the flaw, or teach through decomposition. This is where the repository should learn from `nuwa-skill` more directly.
 
 ### Step 4: Convert into a source pack
 

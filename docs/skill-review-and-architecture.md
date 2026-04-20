@@ -37,7 +37,7 @@ Internally it runs a fixed advisor council:
   - execution clarity
   - validation path
 
-These are implemented as judgment analyzers, not as mimicry.
+These are implemented as judgment analyzers with grounded expression DNA, not as shallow mimicry.
 
 ### 2. Task Routing Layer
 
@@ -59,7 +59,7 @@ The next meaningful extension is explicit persona-mode control:
 - `lens-switch`
 - `panel`
 
-This adds controllability without degrading the core design into role-play. In academic use, mode switching should change judgment emphasis, not voice imitation.
+This adds controllability without degrading the core design into role-play. In academic use, mode switching should change judgment emphasis, but it should also preserve recognizable communication style when the source evidence supports it.
 
 ### 3. Synthesis Layer
 

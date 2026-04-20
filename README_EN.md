@@ -12,7 +12,7 @@ Not just answering questions. Not just giving you more papers to read. A real me
 
 This repo turns that idea into an installable skill system. One skill works with you as a research copilot: reading papers, organizing knowledge, planning experiments, and drafting academic writing. The other skill acts as a strict mentor: judging research direction, problem definition, evidence quality, and whether the task is truly complete. They are designed to disagree productively: the copilot executes, the mentor reviews, and the system continues when the user's goal has not been met.
 
-We deeply respect these scholars. This project does not reduce them to catchphrases or role-play. It studies research judgment patterns visible in their public papers, courses, interviews, talks, and project pages: how they choose important problems, control contribution boundaries, organize evidence, and help ideas become verifiable research work.
+We deeply respect these scholars. This project does not reduce them to cheap role-play. But we also do not want the mentor to feel like a faceless reviewer. It studies research judgment patterns visible in their public papers, courses, interviews, talks, and project pages, and tries to preserve the stable communication style that makes a mentor feel human: how they choose important problems, control contribution boundaries, organize evidence, and turn criticism into usable guidance.
 
 ## What You Get
 
@@ -195,7 +195,7 @@ Good contribution directions include:
 - adapting mentor rules to different academic domains
 - adding real academic test cases to verify whether a distilled mentor stays stable and actually shows judgment
 
-This part of the repo is inspired by [nuwa-skill](https://github.com/alchaincyf/nuwa-skill) and its multi-source person-skill distillation workflow, but adapted for academic use. The emphasis here is on research judgment, paper logic, evidence standards, and mentor-style guidance rather than surface-level persona imitation.
+This part of the repo is inspired by [nuwa-skill](https://github.com/alchaincyf/nuwa-skill) and its multi-source person-skill distillation workflow. We agree with its central lesson: a strong person-skill should preserve not only rules, but also a source-grounded communication style. Here that idea is adapted for academic use, with the emphasis on research judgment, paper logic, evidence standards, and mentor-style guidance rather than surface-level imitation alone.
 
 If you want to distill almost any public figure into a research mentor, a good path is:
 

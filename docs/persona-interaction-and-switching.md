@@ -4,6 +4,8 @@ This document focuses on what matters most for this repository next: multi-advis
 
 The current direction should be understood as one unified mentor with an internal advisor council, not a surface-level multi-character system.
 
+That said, "unified mentor" should not mean "flattened voice." A good academic mentor still needs recognizable communication style, question rhythm, and human conversational continuity.
+
 ## 1. Recommended Persona Modes
 
 ### Mode A: `integrated` (default)
@@ -21,6 +23,7 @@ Strength:
 
 - stable and easy to use
 - preserves the feeling of one long-term mentor relationship
+- allows the mentor to feel like one real person rather than a rotating prompt template
 
 Risk:
 
@@ -151,7 +154,7 @@ Do not:
 Do:
 
 - map switching to academic judgment emphasis
-- keep one shared style discipline
+- keep one shared style discipline while preserving advisor-specific expression DNA
 - preserve one final integrated conclusion even in `panel` mode
 - keep feedback-learning in the weighting layer, not the theatrical layer
 
@@ -174,4 +177,4 @@ For an academic mentor skill, the best product balance is:
 - support `panel` only for high-stakes scenarios
 - keep feedback-learning behind the scenes so the mentor feels more personal without turning into a performance system
 
-This is a better fit for academic use than copying `nuwa-skill`'s personality-distillation pattern too literally, because your goal is not personality entertainment. Your goal is decision quality under different academic pressures.
+This is a better fit for academic use than copying `nuwa-skill` too literally as a role-play engine. But the repo should still learn from `nuwa-skill` that language style matters. The target is not entertainment. The target is a mentor who feels human, recognizable, and academically useful at the same time.
