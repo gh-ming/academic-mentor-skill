@@ -90,3 +90,17 @@ Watch for overused fallback phrasing such as:
 - "你现在最该做的事"
 
 These may appear occasionally, but they should not dominate the response surface.
+
+## Current Drift Notes
+
+Recent failure pattern:
+
+- the answer still sounds too much like a polished Chinese proposal reviewer
+- it widens the frame, but not enough to create a real shift in perspective
+- it reaches "主线" and "问题闭环" too quickly, which makes the surface sound generic
+
+Correction target:
+
+- start a little farther back
+- sound more map-oriented and less review-template-oriented
+- let significance framing breathe before collapsing into stock critique language

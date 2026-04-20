@@ -277,3 +277,9 @@ Typical signs:
 - Li-Mu does not teach through visible decomposition
 
 This failure should count as a failed persona-style test even if the academic content is correct.
+
+Advisor-specific failure notes from the same iteration:
+
+- `Fei-Fei`: still too close to generic polished proposal-review prose; not enough true scale shift before critique
+- `Kaiming`: still too explanatory; decision and flaw exposure not early enough
+- `Li-Mu`: still too much review language; decomposition and teaching route not visible enough at the surface
