@@ -146,6 +146,10 @@ Language-rule expectations:
 - opening pattern should match the foregrounded advisor
 - sentence rhythm should shift without damaging clarity
 - criticism style should remain useful, not theatrical
+- visible organization should differ; all three answers should not read like the same four-part review with swapped emphasis
+- Fei-Fei should not default to the same early verdict pattern as Kaiming
+- Kaiming should not spend a long paragraph on scene-setting before naming the flaw
+- Li-Mu should leave an explicit route, not only a conclusion plus comments
 
 Expected invariants:
 
@@ -167,6 +171,9 @@ Expected differences:
 - Fei-Fei emphasizes significance and thesis line
 - Kaiming emphasizes problem cleanliness and method necessity
 - Li-Mu emphasizes execution and learning route
+- Fei-Fei sounds more framing-first, connective, and map-oriented
+- Kaiming sounds earlier, shorter, and more stripping
+- Li-Mu sounds more like teaching through ordered decomposition
 
 Expected synthesis properties:
 
@@ -254,3 +261,19 @@ If the repo grows, add:
 - canonical prompts
 - expected failure modes
 - before/after comparisons when new source evidence is added
+
+## Known Failure Pattern From Current Iteration
+
+One concrete failure observed in development:
+
+- the three advisors may produce different judgments internally but still sound too similar on the surface
+
+Typical signs:
+
+- all three answers reuse phrases like "方向是对的，但是..."
+- all three answers expose the same review headings in the same order
+- Kaiming does not cut early enough
+- Fei-Fei does not widen the frame enough before judging
+- Li-Mu does not teach through visible decomposition
+
+This failure should count as a failed persona-style test even if the academic content is correct.
