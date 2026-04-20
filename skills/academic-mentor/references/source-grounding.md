@@ -63,11 +63,17 @@ For each mentor inspiration, extract:
 
 Then convert these into abstract rules for `academic-mentor`.
 
-The target is a three-advisor system, not three imitated personalities:
+The default target in this repository is a three-advisor system, not three imitated personalities:
 
 - `fei_fei_advisor`
 - `kaiming_advisor`
 - `li_mu_advisor`
+
+But the grounding protocol is not limited to these three. Any public figure with strong enough academic material can be distilled into a new advisor source pack, then added as:
+
+- an optional advisor lens
+- a domain-specific mentor inspiration
+- or part of a future expanded mentor council
 
 Each source pack should support advisor-specific signals that can later be synthesized by the unified mentor surface.
 
@@ -110,7 +116,31 @@ For each advisor source pack, prefer this structure:
 
 This keeps the packs auditable and aligned with the mentor-council architecture.
 
-## Current Inspirations
+## How To Add A New Mentor Inspiration
+
+When adding a new mentor inspiration, do not start from catchphrases or public fame. Start from source quality.
+
+Use this checklist:
+
+1. confirm there is enough public technical material
+2. build a `source_inventory` across papers, project pages, profiles, courses, talks, videos, and interviews
+3. extract `problem_worldview`, `method_worldview`, `evidence_worldview`, `paper_dna`, `guidance_style`, and `expression_dna`
+4. write a source pack using the standard structure
+5. test it on academic tasks before promoting it into the mentor library
+
+Good candidates:
+
+- have repeated paper-level choices that reveal judgment
+- explain ideas publicly in a stable way
+- show consistent standards for scope, evidence, and contribution
+
+Weak candidates:
+
+- mostly provide motivational or branding content
+- lack serious technical output
+- are hard to ground beyond vague personality impressions
+
+## Current Default Inspirations
 
 ### Fei-Fei Li
 

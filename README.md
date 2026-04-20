@@ -179,6 +179,30 @@ Use both skills to keep improving this opening report until the mentor returns p
 - [examples/mode-switch-prompts.md](./examples/mode-switch-prompts.md)
 - [tests/academic-persona-eval.md](./tests/academic-persona-eval.md)
 
+这套机制并不只适用于当前三位导师。仓库默认内置的是 Fei-Fei / Kaiming / Li-Mu 三类高价值导师视角，但蒸馏协议本身是可扩展的：只要一个人物有足够公开、稳定、可交叉验证的学术材料，这个仓库就可以继续把他或她蒸馏成新的科研导师 source pack，并纳入统一导师系统。
+
+换句话说，这个项目的目标不是停在“三位导师”，而是沉淀一套可复用的科研导师蒸馏方法。
+
+## Contribution
+
+如果你也希望为开源社区贡献一个真正有帮助的科研导师 skill，欢迎继续扩展这套蒸馏机制。
+
+比较推荐的方向包括：
+
+- 为新的学者或公开知识人物整理高质量 source pack
+- 用论文、项目页、课程、访谈和公开视频补强现有导师源包
+- 为不同学科补充更贴近领域语境的导师规则
+- 增加真实学术任务测试，验证导师是否稳定、是否真正有判断力
+
+这部分机制借鉴了 [nuwa-skill](https://github.com/alchaincyf/nuwa-skill) 在“多源蒸馏人物 skill”上的方法优势，但这里更强调学术场景下的研究判断、论文表达、实验证据和导师式指导，而不是表层人格模仿。
+
+如果你想把任意一位公开人物蒸馏成科研导师，建议沿着这条链路推进：
+
+1. 先收集其公开论文、项目页、机构主页、课程、talk、视频和访谈。
+2. 再提炼其 `problem worldview`、`method worldview`、`evidence worldview`、`paper DNA`、`guidance style` 和 `expression DNA`。
+3. 将这些规则整理成新的 source pack，而不是直接做角色扮演 prompt。
+4. 最后用开题、论文、实验计划、答辩等真实学术任务去测试人格是否稳定。
+
 ## Repository Layout
 
 ```text

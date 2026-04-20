@@ -180,6 +180,30 @@ See:
 - [examples/mode-switch-prompts.md](./examples/mode-switch-prompts.md)
 - [tests/academic-persona-eval.md](./tests/academic-persona-eval.md)
 
+This mechanism is not limited to the current three advisors. The repo currently ships Fei-Fei / Kaiming / Li-Mu as the default high-value mentor inspirations, but the distillation protocol itself is extensible: whenever a public figure has enough stable, cross-checkable academic material, this repo can distill that person into a new research-mentor source pack and plug it into the unified mentor system.
+
+In other words, the goal is not to stop at three advisors. The goal is to build a reusable method for distilling research mentors.
+
+## Contribution
+
+If you want to contribute something genuinely useful to the open-source research community, extending this distillation mechanism is one of the best places to help.
+
+Good contribution directions include:
+
+- adding high-quality source packs for new scholars or public intellectuals
+- strengthening existing mentor packs with papers, project pages, talks, lectures, interviews, and videos
+- adapting mentor rules to different academic domains
+- adding real academic test cases to verify whether a distilled mentor stays stable and actually shows judgment
+
+This part of the repo is inspired by [nuwa-skill](https://github.com/alchaincyf/nuwa-skill) and its multi-source person-skill distillation workflow, but adapted for academic use. The emphasis here is on research judgment, paper logic, evidence standards, and mentor-style guidance rather than surface-level persona imitation.
+
+If you want to distill almost any public figure into a research mentor, a good path is:
+
+1. collect public papers, project pages, institutional profiles, lectures, talks, videos, and interviews
+2. extract `problem worldview`, `method worldview`, `evidence worldview`, `paper DNA`, `guidance style`, and `expression DNA`
+3. package those rules into a new source pack instead of writing a pure role-play prompt
+4. validate the result on proposals, papers, experiment plans, and defense tasks
+5. only then decide whether it deserves to join the mentor library
 ## Repository Layout
 
 ```text

@@ -11,7 +11,9 @@ The key lesson from `nuwa-skill` is not "imitate a celebrity." The key lesson is
 
 For an academic mentor skill, this is more important than style.
 
-In this repository, distillation feeds a unified mentor system with an internal three-advisor council rather than a pure single-persona prompt.
+In this repository, distillation feeds a unified mentor system with an internal advisor council rather than a pure single-persona prompt.
+
+The current default council uses Fei-Fei Li, Kaiming He, and Mu Li as high-value academic inspirations, but the mechanism is intentionally extensible. If a public figure has enough stable, source-backed research material, the same pipeline can be used to turn that person into a new research-mentor source pack.
 
 ## 1. Distillation Goal
 
@@ -204,3 +206,86 @@ Near-term priority:
 4. add 5-10 canonical academic prompts and expected judgment criteria
 
 That would make the repo much stronger than a packaging-only skill repo.
+
+## 8. Generalized Mentor Distillation Workflow
+
+To make this repo useful beyond the current three advisors, treat mentor creation as a reusable distillation workflow.
+
+### Step 1: Choose a candidate
+
+Pick a public figure only when there is enough durable material to support academic judgment extraction.
+
+Good candidates usually have:
+
+- a meaningful paper or project record
+- clear public teaching or explanation artifacts
+- repeated signs of stable problem taste and evidence standards
+
+Weak candidates usually have:
+
+- mostly motivational content
+- only interviews and no serious technical output
+- unstable or hype-driven public positions
+
+### Step 2: Build a source inventory
+
+For each candidate, collect:
+
+1. representative papers and project pages
+2. official homepage or institutional profile
+3. public courses, lectures, keynotes, and technical videos
+4. interviews only when they reveal durable research or guidance principles
+
+This is where `nuwa-skill` is particularly useful as a reference: not because this repo wants to mimic celebrities, but because it shows how to do multi-source person distillation with more evidence and less guesswork.
+
+### Step 3: Extract the academic layers
+
+Do not jump from sources straight to persona copywriting. First extract:
+
+- `problem worldview`
+- `method worldview`
+- `evidence worldview`
+- `paper DNA`
+- `guidance style`
+- `expression DNA`
+- `confidence and limits`
+
+For academic mentors, `paper DNA` is usually the most important layer. A useful mentor is not just someone who sounds smart; it is someone whose paper logic can help another researcher define problems better, control claims better, and build better evidence chains.
+
+### Step 4: Convert into a source pack
+
+Every new mentor pack should use a stable structure, so it can be audited and later synthesized with other advisors.
+
+Recommended sections:
+
+- `source_inventory`
+- `problem_worldview`
+- `method_worldview`
+- `evidence_worldview`
+- `paper_dna`
+- `guidance_style`
+- `expression_dna`
+- `derived_rules`
+- `confidence_and_limits`
+
+### Step 5: Test before promotion
+
+Before a new mentor becomes part of the default library, test it on real academic tasks:
+
+- proposal review
+- direction triage
+- paper logic review
+- experiment plan review
+- defense attack simulation
+
+The pass criterion is not "sounds like the person." The pass criterion is whether the mentor stays stable, useful, and source-grounded across tasks.
+
+### Step 6: Decide how it enters the system
+
+A new mentor can enter in one of three ways:
+
+- as a standalone optional source pack
+- as a selectable advisor lens
+- as part of the default unified mentor council
+
+Not every source pack needs to become part of the default council. Some may be valuable only for special domains or special task types.
