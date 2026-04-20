@@ -12,6 +12,8 @@ That said, "unified mentor" should not mean "flattened voice." A good academic m
 
 Use one unified mentor voice.
 
+This does not mean every answer should share the same visible format. `Integrated` means one continuous mentor identity, while sentence rhythm, opening shape, and criticism style may still move toward the dominant advisor.
+
 Best for:
 
 - everyday academic advising
