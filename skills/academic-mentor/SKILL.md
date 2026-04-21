@@ -134,6 +134,7 @@ Pick the closest task type and read the paired reference file before answering:
 If multiple task types apply, choose the one with the highest decision risk. For example, if the user asks for title polish but the real issue is that the proposal problem is not clean, treat it as `proposal`, not style editing.
 
 For the user's current doctoral workflow, also read `references/phd-scenario-optimization.md` when the request involves opening reports, thesis planning, defense preparation, or paper strategy.
+Also read `references/chinese-doctoral-proposal-gate.md` when the task is a Chinese doctoral proposal, opening-report chapter, or thesis-style section review.
 
 When the answer depends on mentor persona or academic judgment style, read the most relevant source pack before answering. In the current default setup, start from:
 
@@ -260,6 +261,7 @@ For `completion-gate` tasks, always test:
 3. If not complete, is there a concrete next revision task?
 4. Has the loop reached `max_iterations`?
 5. Did the copilot include enough `context_basis` for the task?
+6. For academic writing deliverables, did the正文 leak agent process notes, drafting rationale, or “how this section should be written” language?
 
 The visible output must choose one of:
 
@@ -345,6 +347,81 @@ Use these compact response patterns to keep behavior stable without flattening a
 - adjust internal advisor weights gradually, not dramatically
 - never rewrite mentor core rules from a single emotional reaction
 - use accepted and resisted feedback to improve delivery and emphasis, not to flatter
+
+## Proposal Writing Gate
+
+When reviewing a Chinese doctoral proposal or opening-report chapter, judge not only whether the content is correct, but also whether the text reads like a real degree-thesis document rather than a polished assistant draft.
+
+Hard checks:
+
+1. does the section move on one problem-driven line, or does it spread into parallel descriptions
+2. does each paragraph do one thing, or does it mix background, method, significance, and review in one block
+3. are important claims supported by the right citations, or are they floating abstractions
+4. are citations used as evidence, or does the surface keep slipping into mini-review phrasing
+5. does the chapter sound like thesis prose, or like a literature note / project memo / AI explanation
+
+If any answer is weak, do not pass the section.
+
+## Background-And-Significance Gate
+
+For `选题背景及意义`, apply stricter checks:
+
+1. the section must not read like `研究现状`
+2. it must not rely on “某某指出/表明/认为” style sentences as the dominant surface form
+3. it must not become a list of applications, policies, or methods
+4. it must establish:
+   - why the larger problem matters
+   - why a specific spatial-information need emerges from that problem
+   - why the target task is the key data-producing link
+   - why traditional means are insufficient
+   - why the proposed route becomes necessary
+
+If the section explains too much, defends itself too much, or distributes emphasis too evenly across paragraphs, mark it as structurally weak.
+
+## Anti-AI-Prose Gate
+
+Reject or revise when the proposal shows these symptoms:
+
+- overly even paragraph weight with no rhetorical hierarchy
+- abstract nouns stacked without concrete support
+- defensive phrasing used as a habitual crutch rather than a rare rhetorical tool
+- review-style interruption in thesis prose
+- terminology that sounds academic but does not name a concrete object or property
+
+When this happens, require revision toward:
+
+1. firmer judgment sentences
+2. narrower and more concrete nouns
+3. paragraph-level role separation
+4. evidence matched to each major claim
+
+## Terminology Precision Gate
+
+In proposal review, challenge wide or vague terms aggressively.
+
+Examples of terms that often need pressure:
+
+- `区域可比性`
+- `空间格局`
+- `可用性`
+- `基础数据产品`
+- `结果表达`
+
+Review rule:
+
+1. ask what concrete property the term refers to
+2. if it can be rewritten as a more specific object, condition, or evaluation dimension, require that rewrite
+3. do not let broad nouns survive just because they sound formal
+
+## Citation Discipline Gate
+
+When reviewing proposal prose:
+
+1. do not reward citation pile-ups
+2. check whether each sentence's key wording is actually supported by the cited paper
+3. prefer one or two authoritative citations that tightly support the claim over a long mixed list
+4. if a Chinese thesis-style framing is better grounded by authoritative Chinese reviews, allow and prefer those
+5. if the paragraph turns into mini related work because of citation phrasing, send it back for rewrite
 
 ## How To Reason
 
